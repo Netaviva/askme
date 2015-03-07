@@ -1,0 +1,107 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage setting : controller_template - admincp\edit.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div class="page-menu">
+	<ul>
+		<li>
+			Select Module:
+			<select id="module-select" name="">
+				<option value=""> -- Jump to -- </option>
+                <optgroup label="Module Settings">
+                    <?php foreach($aModuleSettings as $aModuleSetting): ?>
+                    <option value="<?php echo $this->url('setting:admincp', array('category' => 'module-' . $aModuleSetting['module_id'])); ?>"><?php echo $aModuleSetting['module_id']; ?></option>
+                    <?php endforeach; ?>
+                </optgroup>
+				<optgroup label="Categorised Settings">
+                    <?php foreach($aCategorySettings as $aCategorySetting): ?>
+					<option value="<?php echo $this->url('setting:admincp', array('category' => 'category-' . $aCategorySetting['category_id'])); ?>"><?php echo $aCategorySetting['category_title']; ?></option>
+                    <?php endforeach; ?>
+				</optgroup>
+			</select>
+		</li>
+	</ul>
+	<script type="text/javascript">
+		$('select#module-select').change(function(){
+			window.location = $(this).find('option:selected').val();
+		});
+	</script>
+</div>
+
+<div class="admincp-setting-edit">
+
+	<?php if(count($aSettings)): ?>
+    <form action="<?php Linko::Url()->make('self'); ?>" method="post">
+        <div class="module">
+    		<?php foreach($aSettings as $iKey => $aSetting): ?>
+                <div class="module-header">
+                    <h3><?php echo $aSetting['setting_title']; ?></h3>
+                </div>
+
+	            <div class="module-content">
+		            <div class="controls">
+			            <div class="control-item clearfix">
+				            <div class="control-item-label">
+					            <?php echo $aSetting['setting_description']; ?>
+				            </div>
+
+				            <div class="control-item-data">
+					            <div class="control-data-wrap">
+						            <?php if($aSetting['setting_type'] == 'string' || $aSetting['setting_type'] == 'text'): ?>
+						            <input type="text" name="val[value][<?php echo $aSetting['setting_var']; ?>]" value="<?php echo $aSetting['setting_value']; ?>" size="40" />
+
+						            <?php elseif($aSetting['setting_type'] == 'longstring' || $aSetting['setting_type'] == 'longtext'): ?>
+							            <textarea name="val[value][<?php echo $aSetting['setting_var']; ?>]"><?php echo $aSetting['setting_value']; ?></textarea>
+
+						            <?php elseif($aSetting['setting_type'] == 'integer'): ?>
+						            <input type="text" name="val[value][<?php echo $aSetting['setting_var']; ?>]" value="<?php echo $aSetting['setting_value']; ?>" size="40" onclick="this.select();" />
+
+
+						            <?php elseif($aSetting['setting_type'] == 'boolean' || $aSetting['setting_type'] == 'bool'): ?>
+						            <select name="val[value][<?php echo $aSetting['setting_var']; ?>]">
+							            <option value="1" <?php if($aSetting['setting_value'] == 1): ?>selected="selected"<?php endif; ?>>True</option>
+							            <option value="0" <?php if($aSetting['setting_value'] != 1): ?>selected="selected"<?php endif; ?>>False</option>
+						            </select>
+
+
+						            <?php elseif($aSetting['setting_type'] == 'password'): ?>
+						            <input type="password" name="val[value][<?php echo $aSetting['setting_var']; ?>]" value="<?php echo $aSetting['setting_value']; ?>" size="40" />
+
+						            <?php elseif($aSetting['setting_type'] == 'select'): ?>
+						            <select name="val[value][<?php echo $aSetting['setting_var']; ?>]">
+                                        <option value=""> -- Select -- </option>
+							            <?php $this->plugin('option', array(
+							            'data' => $aSetting['setting_param']['data'],
+							            'value_key' => isset($aSetting['setting_param']['data_value_key']) ? $aSetting['setting_param']['data_value_key'] : null,
+							            'title_key' => isset($aSetting['setting_param']['data_title_key']) ? $aSetting['setting_param']['data_title_key'] : null,
+							            'default' => $aSetting['setting_value']
+						            )); ?>
+						            </select>
+
+						            <?php elseif($aSetting['setting_type'] == 'array'): ?>
+						            &nbsp;
+						            <?php endif; ?>
+					            </div> <!-- End .controls -->
+				            </div>
+			            </div>
+		            </div>
+	            </div>
+            <?php endforeach; ?>
+            <div class="module-footer">
+                <input class="button" type="submit" value="Submit" />
+            </div>
+        </div><!-- end .module -->
+    </form>
+    <?php else: ?>
+    	<h4 class="no-record">No Setting Found</h4>
+    <?php endif; ?>
+</div>

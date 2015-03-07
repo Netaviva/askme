@@ -1,0 +1,86 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage setting : controller_template - admincp\index.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div class="admincp-setting">
+	<div class="module">
+		<div class="module-header">
+			<h3>Module Settings</h3>
+		</div>
+
+		<div class="module-content">
+			<table>
+				<thead>
+				<tr>
+					<th>
+						Module
+					</th>
+					<th>
+						Total Settings
+					</th>
+				</tr>
+				</thead>
+				<tbody>
+				<?php foreach($aModuleSettings as $aModuleSetting): ?>
+				<tr>
+					<td>
+						<a href="<?php echo Linko::Url()->make('setting:admincp', array('category' => 'module-' . $aModuleSetting['module_id'])); ?>">
+							<?php echo ucwords($aModuleSetting['module_id']); ?>
+						</a>
+					</td>
+					<td>
+						<?php echo $aModuleSetting['total_module_setting']; ?>
+					</td>
+				</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+
+    <div class="module">
+    	<div class="module-header">
+            <h3>Categorised Settings</h3>
+        </div>
+        
+        <div class="module-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Category
+                        </th>
+                        <th>
+                            Total Settings
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($aCategorySettings as $aCategorySetting): ?>
+                    <tr>
+                        <td>
+                            <a href="<?php echo Linko::Url()->make('setting:admincp', array('category' => 'category-' . $aCategorySetting['category_id'])); ?>">
+                                <?php echo ucwords($aCategorySetting['category_title']); ?>
+                            </a>
+                        </td>
+                        <td>
+                            <?php echo $aCategorySetting['total_category_setting']; ?>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

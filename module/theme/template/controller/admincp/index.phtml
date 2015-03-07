@@ -1,0 +1,67 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage theme : controller_template - admincp\index.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div class="theme admincp">
+    <div class="module">
+        <div class="module-header">
+            <h3>Themes</h3>
+        </div>
+
+        <div class="module-content">
+	        <ul class="item-list theme-list">
+                <?php foreach($aThemes as $sType => $aTheme): ?>
+                <?php foreach($aTheme as $sTheme => $aManifest): ?>
+			        <li>
+				        <h3 class="theme-title">
+                            <?php echo $aManifest['title']; ?>
+				        </h3>
+				        <div class="theme-screenshot">
+					        <img width="180" height="140" src="<?php echo $aManifest['screenshot']; ?>" />
+				        </div>
+				        <ul class="theme-info">
+					        <li>
+						        <span>Version:</span> <?php echo $aManifest['version']; ?>
+					        </li>
+					        <li>
+						        <span>Type:</span> <?php echo $sType; ?>
+					        </li>
+					        <li>
+						        <span>Author:</span> <?php echo $aManifest['author']; ?>
+					        </li>
+				        </ul>
+				        <div class="theme-action">
+                            <ul class="button-group radius">
+                                <li>
+                                    <a class="button small" href="<?php echo Linko::Url()->make('theme:admincp:view', array('theme' => $sTheme, 'type' => $sType)); ?>">View Theme</a>
+                                </li>
+                                <li>
+                                    <?php if($aManifest['default'] === false): ?>
+	                                <form action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+		                                <input type="hidden" name="default[theme]" value="<?php echo $sTheme; ?>" />
+		                                <input type="hidden" name="default[type]" value="<?php echo $sType; ?>" />
+		                                <input type="submit" value="Set Default" class="button small" />
+	                                </form>
+                                    <?php else: ?>
+                                    <input type="submit" disabled="disabled" value="Default <?php echo ucwords($sType); ?>" class="button small success" />
+                                    <?php endif; ?>
+                                </li>
+                            </ul>
+				        </div>
+			        </li>
+                    <?php endforeach; ?>
+                <?php endforeach; ?>
+		        <div class="clear"></div>
+	        </ul>
+        </div>
+    </div>
+</div>

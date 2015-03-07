@@ -1,0 +1,32 @@
+<?php defined('LINKO') or exit;
+
+/**
+ * @package Mobile
+ * @author Morrison Laju <morrelinko@gmail.com>
+ * @var $this Linko_Application_Template
+ */
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<title><?php echo $this->getTitle(); ?></title>
+<?php echo $this->getHeader(); ?>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+        <a href="<?php echo $this->url('mobile:dashboard'); ?>" id="logo">
+            <h1><?php echo Linko::Module()->getSetting('page.site_title'); ?></h1>
+            <small>mobile 1.0</small>
+        </a>
+	</div>
+	<div id="content">
+		<?php echo $this->getContent(); ?>
+	</div>
+	<div id="footer">
+
+	</div>
+</div>
+<?php echo $this->getFooter(); ?>
+</body>
+</html>

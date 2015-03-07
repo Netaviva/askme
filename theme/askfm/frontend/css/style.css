@@ -1,0 +1,692 @@
+body {
+    position: relative;
+    padding-top: 40px;
+    background: #55AA55 !important;
+    background-attachment: fixed !important;
+    background-image: url("../image/bg2.png") !important;
+    background-repeat: repeat-x !important;
+    background-position: bottom left !important;
+}
+
+/* Code in headings */
+h3 code {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+
+
+/* Tweak navbar brand link to be super sleek
+-------------------------------------------------- */
+
+body > .navbar {
+    font-size: 13px;
+}
+
+/* Change the docs' brand */
+body > .navbar .brand {
+    padding-right: 5;
+    padding-left: 0;
+    margin-left: 10px;
+    float: left;
+    font-weight: bold;
+    font-size: 30px;
+    color: #000;
+    text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    transition: all .2s linear;
+}
+body > .navbar .brand:hover {
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
+}
+
+textarea
+{
+    width: 100%;
+}
+
+#header-profile-link
+{
+}
+
+/** End Menu **/
+
+#page-header
+{
+    background-color: #53B2D5;
+}
+
+#page-header h2
+{
+    color: #FFFFFF;
+    font-size: 25px;
+    margin: 0;
+    padding: 10px 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+#main
+{
+    background-color:#ffffff;
+    border-radius: 4px 4px 4px 4px;
+    margin-bottom: 30px;
+    margin-top: 25px;
+    min-height: 200px;
+    -webkit-box-shadow: 0 0px 4px 2px lightgrey;
+    -moz-box-shadow: 0 0px 4px 2px lightgrey;
+    box-shadow: 0 0px 4px 2px lightgrey;
+
+
+}
+
+#leftbar,
+#sidebar
+{
+    margin-top: 20px;
+
+}
+
+/**
+    Question Container
+*/
+
+#questions-container{
+    padding: 0 10px;
+}
+
+/**
+    Blocks
+*/
+#sidebar .block
+{
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.075);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.075);
+    box-shadow: 0 0px 4px 2px lightgrey;
+    background: white;
+    border-radius: 4px 4px 4px 4px;
+
+}
+
+#leftbar .block .block-title,
+#sidebar .block .block-title
+{
+    font-size: 20px;
+    background: lightgrey;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 3px;
+}
+
+#leftbar .block .block-inner > ul > li,
+#sidebar .block .block-inner > ul > li
+{
+    background-color: #FFFFFF;
+    border-radius: 4px 4px 4px 4px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+}
+
+#leftbar .block .block-inner > div,
+#sidebar .block .block-inner > div
+{
+    background-color: #FFFFFF;
+    border-radius: 4px 4px 4px 4px;
+    padding: 5px 10px;
+    line-height: 20px;
+}
+
+.block .control-item
+{
+    padding: 0;
+}
+
+.block .control-item-label,
+.block .control-item-data
+{
+    float: none;
+    width: 100%;
+    text-align: left;
+}
+
+.block .control-bottom
+{
+    margin-left: 0;
+    margin-top: 0;
+}
+
+/** End Block **/
+
+#footer
+{
+    border-radius: 10px;
+    color: grey;
+    font-weight:bold;
+    font-size: 0.8em;
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+#footer .copyright
+{
+    float: left;
+}
+
+#footer ul.social-links
+{
+    float: right;
+}
+
+ul.social-links li
+{
+    background-color: lightgrey;
+    border-radius: 3px 3px 3px 3px;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 2px 0;
+    width: 28px;
+    height: 25px;
+}
+
+ul.social-links img
+{
+    width: 36px;
+}
+
+/**
+ * Standards
+*/
+
+/****** Form Controls *****/
+form, textarea
+{
+    margin: 0px !important;
+}
+
+.controls
+{
+
+}
+
+.control-item
+{
+    padding: 10px 0;
+    clear: both;
+}
+
+.control-item-label
+{
+    float: left;
+    width: 23%;
+    text-align: right;
+    margin-right: 2%;
+}
+
+.control-item-label label
+{
+    line-height: 20px;
+    font-size: 12px;
+    color: #808080;
+}
+
+.control-item-data
+{
+    float: left;
+    width: 65%;
+}
+
+.control-bottom
+{
+    clear: both;
+    margin-left: 27%;
+    padding-bottom: 10px;
+}
+
+.control-bottom.no-label
+{
+    margin-left: 0;
+}
+
+.control-item-data.no-label
+{
+    margin-left: 0;
+    float: none;
+    width: 100%;
+}
+
+.control-item-data select
+{
+    border: 1px solid #CCCCCC;
+    padding: 6px;
+}
+
+/**
+ * Pagination
+*/
+
+.pager
+{
+    font-size: 16px;
+    height: 30px;
+    margin: 15px 0 11px;
+}
+
+.pager ul
+{
+    box-shadow: none;
+    border-radius: 0px;
+    background: transparent;
+    height: 30px;
+}
+
+.pager ul > li
+{
+    margin-right: 8px;
+    border-radius: 0px;
+    display: inline-block;
+}
+
+.pager ul > li a
+{
+    background-color: #4BCAF3;
+    border: 1px solid #2795BA;
+    color: #333333;
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+    text-align: center;
+    width: 32px;
+}
+
+.pager ul > li a:hover
+{
+    color: #ffffff;
+    background-color: #2795BA;
+}
+
+/**
+ * Specifics
+*/
+#sidebar .block .blog-category span
+{
+    display: block;
+    color: #545454;
+    font-weight: bold;
+    float: right;
+}
+
+/* User profile **/
+.user-profile-info
+{
+    float: left;
+    width: 30%;
+}
+
+.user-profile-info img
+{
+    background-color: #DCDCDC;
+    border: 1px solid #CCC;
+    padding: 5px;
+}
+
+.user-profile-data
+{
+    float: left;
+    width: 70%;
+    margin-left: 0;
+}
+
+.user-profile-data li
+{
+    border-bottom: 1px solid #D4D4D4;
+    padding: 10px 0;
+}
+
+.user-profile-data li span
+{
+    font-weight: bold;
+}
+
+/* #Clearing
+================================================== */
+
+.clearfix:before,
+.clearfix:after,
+.control-item:before,
+.control-item:after {
+    content: '\0020';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0; }
+.control-item:after,
+.clearfix:after {
+    clear: both; }
+.control-item,
+.clearfix {
+    zoom: 1; }
+
+/* You can also use a <br class="clear" /> to clear columns */
+.clear {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+/*================= Items ========================*/
+
+/** Toast Notification */
+.notify-toast-container
+{
+    padding: 5px 10px;
+    background-color: #666666;
+    border:  2px solid #555555;
+    color: #f4f4f4;
+    font-weight: bold;
+    opacity: 0.9;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    z-index: 999999;
+}
+
+/** Flash Notifications Wrapper */
+.notify-flash-wrapper
+{
+    width: 100%;
+    z-index: 1000000;
+}
+
+#notify-flash-wrapper-bottom
+{
+    border-bottom:  1px solid #A3D385;
+}
+
+#notify-flash-wrapper-top
+{
+    border-bottom:  1px solid #A3D385;
+}
+
+/** Flash Notification */
+.notify-flash-container
+{
+    color: #0D593D;
+    background-color: rgba(189, 242, 158, 0.8);
+    background-repeat: repeat-x;
+    width: 100%;
+    border-bottom:  1px solid #A3D385;
+    font-weight: bold;
+    text-align:  center;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+    height: 70px;
+    line-height: 70px;
+}
+
+.notify-flash-container:last-child
+{
+    border: none;
+}
+
+/** Sticky Notifications Wrapper */
+.notify-sticky-wrapper
+{
+    width: 311px;
+}
+
+/** Sticky Notification */
+.notify-sticky-container
+{
+    color: #FFF;
+    min-width: 150px;
+    text-align: center;
+    padding: 5px 10px;
+    border: 3px solid #111;
+    background-color: #333333;
+    background-color: rgba(0, 0, 0, 0.85);
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.5);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+/** Positioning */
+.notify-position-left
+{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.notify-position-right
+{
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.notify-position-center-left
+{
+    margin-left: 20px;
+}
+
+.notify-position-center-right
+{
+    margin-right: 20px;
+}
+
+.notify-position-bottom-left
+{
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.notify-position-bottom-center
+{
+    margin-bottom: 20px;
+}
+
+.notify-position-bottom-right
+{
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.notify-position-top-left
+{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.notify-position-top-center
+{
+    margin-top: 20px;
+}
+
+.notify-position-top-right
+{
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+/* =============== Modal =======================*/
+
+/* Overlay */
+#modal-overlay
+{
+    background-color: #000000;
+    z-index: 99999999999999999999;
+}
+
+h3#modal-title
+{    
+    background: #2b2d38;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #464a56), color-stop(100%, #2b2d38));
+    background: -webkit-linear-gradient(top, #464a56 0%, #2b2d38 100%);
+    background: -moz-linear-gradient(top, #464a56 0%, #2b2d38 100%);
+    background: -ms-linear-gradient(top, #464a56 0%, #2b2d38 100%);
+    background: -o-linear-gradient(top, #464a56 0%, #2b2d38 100%);
+    background: linear-gradient(top, #464a56 0%, #2b2d38 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff464a56', endColorstr='#ff2b2d38', GradientType=0 );
+    filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+    border-radius: 4px 4px 0 0;
+    color: #F1F1F1;
+    padding: 5px 15px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.8);
+    margin: 0px;
+    padding: 0px;
+    font-size: 15px;
+    padding-left:5px;
+}
+
+/* Container */
+#modal-form-container, #modal-content-container
+{
+    color: #bbb;
+    background-color: #FFF;
+    border: 4px solid #444;
+    border-radius: 10px;
+}
+
+#modal-form-container textarea
+{
+    width: 97%;
+}
+
+#modal-content
+{
+    padding: 8px;
+    position: relative;
+}
+
+
+#modal-container a.modalCloseImg
+{
+    background: url(../image/modal/x.png) no-repeat;
+    width: 25px;
+    height: 29px;
+    display: inline;
+    z-index: 3200;
+    position: absolute;
+    top: -15px;
+    right: -16px;
+    cursor: pointer;
+}
+
+#modal-footer
+{
+    border-top: 1px solid #CCC;
+    width: 95%;
+    padding: 5px 10px;
+    background-color: #f4f4f4;
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: 3px;
+}
+
+/*homepage style sheets*/
+.register-group-select select
+{
+    width:25%;
+    margin: 2px;
+}
+
+
+.global-error-container
+{
+    width: 95%;
+    text-align: left;
+}
+.global-error-container div
+{
+    text-align: left;
+}
+
+
+#login-modal-form
+{
+    position: relative;
+    margin-left:100px;
+    margin-top:30px;
+}
+#login-modal-form input[type=text], #login-modal-form input[type=password]
+{
+    width:60%
+}
+
+.user-list
+{
+    list-style: none;
+    display: inline;
+    position: relative;
+    width: 98%;
+    margin: 4px;
+    float:left;
+}
+.user-list li
+{
+    display: inline;
+    float:left;
+    margin: 5px;
+}
+
+.user-list li .user-meta
+{
+    margin: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+/*Buttons Styling*/
+.btn{
+    border-radius: 3px 3px 3px 3px;
+    font-size: 12px;
+    font-weight: bold
+}
+.btn-green{
+    background-color: #46AC32;
+    background-image: -moz-linear-gradient(center top , #7BCA79, #3B9B28);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.5);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.35);
+}
+#modal-footer .modal-close {
+      background-color: #ba3737;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eb5656), to(#981e1e));
+  background-image: -webkit-linear-gradient(top, #eb5656, #981e1e);
+  background-image:    -moz-linear-gradient(top, #eb5656, #981e1e);
+  background-image:      -o-linear-gradient(top, #eb5656, #981e1e);
+  background-image:   linear-gradient(to bottom, #eb5656, #981e1e);
+  background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.5);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.35);
+}
+.block-inner{
+    margin-bottom: 10px;
+}
+.navbar .username-btn{
+    border-radius: 0px !important;
+}
+
+/*Activity Module*/
+#activity-wrapper {
+    padding: 10px;
+}
+.activity-status-comment{
+    width:95%;
+}
+.pagination ul {
+    margin: 10px !important;
+}

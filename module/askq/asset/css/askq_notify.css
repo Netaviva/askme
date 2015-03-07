@@ -1,0 +1,12 @@
+#askq-notification-link
+{
+    padding: 7px;
+    padding-right: 14px;
+    background: url("../image/q_icon.png") no-repeat;
+    color: red;
+    font-weight: bolder;
+    border-radius: 6px;
+    position: relative;
+    top:15px;
+    left: 40px;
+}

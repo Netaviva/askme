@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:theme>
+	<title>LinkoCMS AdminCP</title>
+	<description>Default Admin panel based on Zurb Foundation Css.</description>
+	<author>LinkoDEV Team</author>
+	<author_url>http://linkodev.com</author_url>
+	<version>1.0</version>
+</extension:theme>

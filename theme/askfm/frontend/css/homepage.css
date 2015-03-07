@@ -1,0 +1,51 @@
+#topography
+{
+    height: 270px;
+
+    background: linear-gradient(45deg, #003300 0%, #66CC00 100%) repeat scroll 0 0 transparent;
+
+}
+#topography h1
+{
+    color: white;
+}
+
+.home-general-div
+{
+    background:#ffffff;
+    -webkit-box-shadow: 0 0px 4px 2px lightgrey;
+    -moz-box-shadow: 0 0px 4px 2px lightgrey;
+    box-shadow: 0 0px 4px 2px #006400;
+    border-radius: 10px;
+
+}
+
+#register-form-container
+{
+    width:auto;
+}
+#register-form-container h1
+{
+    font-size: 17px;
+    color: #808080;
+    margin-left:10px
+}
+.register-group-select{
+    width: 270px;
+}
+
+#site-details{
+    left: 0px;
+    min-height: 100px;
+}
+
+#site-details p
+{
+    font-size: 13px;
+}
+.sit-details-images
+{
+    margin:5px;
+    border-radius: 4px;
+    width: 100%;
+}

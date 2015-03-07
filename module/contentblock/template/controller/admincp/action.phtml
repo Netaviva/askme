@@ -1,0 +1,47 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage contentblock : controller_template - admincp\action.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<form id="create_block" action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+    <div class="module">
+    	<div class="module-header">
+        	<h3>Block Details</h3>
+        </div>
+        
+        <div class="module-content">
+            <div class="controls">
+	            <div class="control-item">
+		            <div class="control-item-label">
+			            <label for="title">Title: </label>
+		            </div>
+		            <div class="control-item-data">
+			            <input id="title" type="text" name="val[title]" class="input-text" value="<?php echo Arr::get($aVals, 'title', Arr::get($aBlock, 'title', '')); ?>" />
+		            </div>
+	            </div>
+
+	            <div class="control-item">
+		            <div class="control-item-label">
+			            <label for="text">Content: </label>
+		            </div>
+		            <div class="control-item-data">
+			            <textarea class="contentblock-text" name="val[text]" rows="10" cols="0"><?php echo Arr::get($aVals, 'text', Arr::get($aBlock, 'text', '')); ?></textarea>
+		            </div>
+	            </div>
+            </div>
+
+            <div class="module-footer">
+            	<input type="submit" value="<?php echo(isset($aBlock['contentblock_id']) ? 'Update Block' : 'Create Block'); ?>" class="button" />
+            </div>
+        </div>      
+    </div>
+    
+</form>

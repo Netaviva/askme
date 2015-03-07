@@ -1,0 +1,62 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage contentblock : controller_template - admincp\index.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div class="module">
+	<div class="module-header">
+    	<h3>Blocks Created</h3>       
+        <ul>
+            <li>
+                <a class="button small" href="<?php echo Linko::Url()->make('contentblock:admincp:action', array('action' => 'add')); ?>">Create Content block</a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="module-content">    
+        <?php if(count($aBlocks)): ?>
+        <table>
+        	<thead>
+                <tr>
+                	<th style="width: 25%">Title</th>
+                    <th style="width: 60%">Content</th>
+                    <th style="width: 15%"></th>
+                </tr>
+            </thead>
+            <tbody>
+            	<?php foreach($aBlocks as $aBlock): ?>
+            	<tr>
+                	<td>
+                    	<?php echo $aBlock['title']; ?>
+                    </td>
+                    <td>
+                    	<?php echo strip_tags($aBlock['text']); ?>
+                    </td>
+                    <td>
+                    	<a href="<?php echo Linko::Url()->make('contentblock:admincp:action', array('action' => 'edit', 'id' => $aBlock['contentblock_id'])); ?>">Edit</a> |
+	                    <a href="<?php echo Linko::Url()->make('contentblock:admincp:action', array('action' => 'delete', 'id' => $aBlock['contentblock_id'])); ?>">Delete</a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>   	
+        <?php else: ?>
+    	<div class="no-item">
+        	<h2>
+            	No Content Blocks Created.
+            </h2>
+            <h5>
+            	<a href="<?php echo Linko::Url()->make('contentblock:admincp:action', array('action' => 'add')); ?>">Click Here</a> to create a content block.
+            </h5>
+        </div>
+        <?php endif; ?>
+    </div> 
+</div>

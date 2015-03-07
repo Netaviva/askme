@@ -1,0 +1,68 @@
+<div class="admincp-gamification-module">
+    <div class="module">
+        <div class="module-header">
+            <h3>Activities</h3>
+        </div>
+
+        <div class="module-content">
+
+        <form enctype="multipart/form-data" action="<?php echo Linko::Url()->make('gamification:admincp:badge',array('action' => 'edit', 'id' => $aDetails['badge_id']))?>"  method="post" >
+    <div class="controls">
+        <div class="control-item ">
+            <div class="control-item-label">Badge Name</div>
+            <div class="control-item-data">
+                <div class="control-data-wrap">
+                    <input type="text" name="val[badge-name]" value="<?php echo $aDetails['badge_name']?>" class="input" size="40">
+                    <input type="hidden" name="val[badge-ref]" value="<?php echo $aDetails['badge_ref']?>" class="input" size="40">
+
+                </div>
+            </div>
+            <br><br>
+            <div class="control-item-label">Activity Count Limit(eg 10)</div>
+
+            <div class="control-item-data">
+                <div class="control-data-wrap">
+
+
+                    <input type="text" name="val[badge-limit]" value="<?php echo $aDetails['activity_limit']?>" class="input" size="40">
+
+
+                </div>
+            </div>
+
+            <?php if(Linko::Model('gamification/point')->usePointSystem()):?>
+            <br><br/>
+            <div class="control-item-label">Point To Award User</div>
+
+            <div class="control-item-data">
+                <div class="control-data-wrap">
+                    <input type="text" name="val[point]" value="<?php echo $aDetails['badge_point']?>" class="input" size="40">
+
+                </div>
+            </div>
+
+
+            <?php endif?>
+            <br><br>
+            <div class="control-item-label">Change Badge Icon</div>
+
+            <div class="control-item-data">
+                <div class="control-data-wrap">
+                    <img src="<?php  echo ($this->getImage(array('path' => $aDetails['badge_icon'], 'size' => 100), 'gamification_image')); ?>" />
+                   <br/> <input type="file" name="image" class="input" size="30">
+
+                </div>
+            </div>
+            <div class="control-item-data">
+                <div class="control-data-wrap">
+                    <input type="submit" value="Save" class="button" size="30">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</form>
+</div>
+</div></div>

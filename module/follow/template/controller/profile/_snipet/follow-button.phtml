@@ -1,0 +1,7 @@
+<?php if(Linko::Model('profile')->isProfile() && Linko::Model('user/auth')->getUserId() != Linko::Model('profile')->getOwnerId()):?>
+
+    <a href="" class="button <?php echo (Linko::Model('follow')->isFollowing(Linko::Model('profile')->getOwnerId())) ? 'btn-danger' : ''?>" follow = "<?php echo (Linko::Model('follow')->isFollowing(Linko::Model('profile')->getOwnerId())) ? '1' : '0'?>"  id="profile-follow-button" userid="<?php echo Linko::Model('profile')->getOwnerId()?>" >
+
+      <?php echo (Linko::Model('follow')->isFollowing(Linko::Model('profile')->getOwnerId())) ? 'Unfollow' : 'Follow'?>
+    </a><span id="profile-follow-indicator"></span>
+<?php endif?>

@@ -1,0 +1,181 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage menu : controller_template - admincp\action.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+
+<form action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+	<div class="module">
+		<div class="module-header">
+			<h3>Menu #<?php echo $iMenuId; ?> </h3>
+		</div>
+
+		<div class="module-content">
+			<div class="controls">
+				<div class="control-group">
+					<h4>General</h4>
+
+					<div class="control-item">
+						<div class="control-item-label">
+							<label for="title">Title: </label>
+						</div>
+						<div class="control-item-data">
+							<input type="text" id="title" class="input-text" name="val[title]" value="<?php echo Arr::get($aVals, 'title', Arr::get($aMenuItem, 'menu_item_title', '')); ?>"/>
+						</div>
+					</div>
+
+					<div class="control-item">
+						<div class="control-item-label">
+							<label for="url">Url: </label>
+						</div>
+						<div class="control-item-data">
+							<input type="text" id="url" class="input-text" name="val[url]" value="<?php echo Arr::get($aVals, 'url', Arr::get($aMenuItem, 'menu_item_url', '')); ?>"/>
+							<small>
+								<input type="checkbox" id="js-select-page"<?php echo (Arr::get($aMenuItem, 'page_id', '') != 0 ? ' checked="checked"' : ''); ?> />
+								Or select a page
+							</small>
+
+							<div style="display: none;" id="js-page-form">
+								<div class="control-item">
+									<div class="control-item-label">
+										<label>Page: </label>
+									</div>
+									<div class="control-item-data">
+										<select name="val[page_id]" style="width: 380px;">
+											<option> -- Select Page --</option>
+                                            <?php foreach ($aPages as $aPage): ?>
+											<option
+											value="<?php echo $aPage['page_id']; ?>"<?php echo (Arr::get($aVals, 'page_id', Arr::get($aMenuItem, 'page_id', '')) == $aPage['page_id']) ? ' selected="selected"' : ''; ?>><?php echo $aPage['page_title']; ?></option>
+                                            <?php endforeach; ?>
+										</select>
+									</div>
+								</div>
+
+								<div class="control-item">
+									<div class="control-item-label">
+										<label>Paramters: </label>
+									</div>
+									<div class="control-item-data">
+										<input type="text" id="param" class="input-text" name="val[param]"
+										       value="<?php echo Arr::get($aVals, 'param', Arr::get($aMenuItem, 'menu_item_param', '')); ?>"/>
+										<small>For advance users. Leave it empty if you don't know how to set this.
+										</small>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<script type="text/javascript">
+						if($('#js-select-page').is(':checked')){
+							$('#js-page-form').show();
+						}
+
+						$('#js-select-page').change(function() {
+							if($(this).is(':checked')) {
+								$('#js-page-form').show();
+							}
+							else {
+								$('#js-page-form').hide();
+							}
+						});
+					</script>
+					<!-- end .control-item -->
+
+					<div class="control-item">
+						<div class="control-item-label">
+							<label for="parent">Parent Menu:</label>
+						</div>
+						<div class="control-item-data">
+							<select name="val[parent_id]">
+								<option value="0"> None</option>
+                                <?php foreach ($aParents as $aParent): ?>
+                                <option value="<?php echo $aParent['menu_item_id']; ?>">
+                                    <?php echo str_repeat(' - ', $aParent['menu_depth']); ?>
+                                    <?php echo $aParent['menu_item_title']; ?>
+                                </option>
+                                <?php endforeach; ?>
+							</select>
+						</div>
+					</div>
+
+				</div>
+				<!-- end .control-group -->
+
+				<div class="control-group">
+					<h4>Menu Options</h4>
+
+					<div class="control-item">
+						<div class="control-item-label">
+							<label>Status:</label>
+						</div>
+						<div class="control-item-data">
+							<select name="val[status]">
+								<option
+								value="1"<?php echo Arr::get($aVals, 'status', Arr::get($aMenuItem, 'menu_item_status', '')) == '1' ? ' selected="selected"' : ''; ?>>
+									Active
+								</option>
+								<option
+								value="0"<?php echo Arr::get($aVals, 'status', Arr::get($aMenuItem, 'menu_item_status', '')) == '0' ? ' selected="selected"' : ''; ?>>
+									Inactive
+								</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="control-item">
+						<div class="control-item-label">
+							<label>Target:</label>
+						</div>
+						<div class="control-item-data">
+							<select name="val[target]">
+								<option
+								value="0"<?php echo Arr::get($aVals, 'target', Arr::get($aMenuItem, 'menu_item_target', '')) == 0 ? ' selected="selected"' : ''; ?>>
+									Same Window
+								</option>
+								<option
+								value="1"<?php echo Arr::get($aVals, 'target', Arr::get($aMenuItem, 'menu_item_target', '')) == 1 ? ' selected="selected"' : ''; ?>>
+									New Window
+								</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<!-- end .control-group -->
+
+				<div class="control-group">
+					<h4>User Access</h4>
+
+					<div class="control-item">
+						<div class="control-item-label">
+							<label for="allow_access">Select Who Can See Menu: </label>
+						</div>
+						<div class="control-item-data">
+							<ul>
+                                <?php foreach ($aUserRoles as $aRole): ?>
+								<li>
+									<input type="checkbox"
+									       name="val[allow_access][]"<?php echo((in_array($aRole['role_id'], Arr::get($aMenuItem, 'allow_access', array())) || !$bEdit) ? ' checked="checked"' : ''); ?>
+									       value="<?php echo $aRole['role_id']; ?>"/>
+                                    <?php echo $aRole['role_title']; ?>
+								</li>
+                                <?php endforeach; ?>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="module-footer">
+			<input type="submit" value="<?php echo $bEdit ? 'Save' : 'Create'; ?>" class="button"/>
+		</div>
+	</div>
+</form>

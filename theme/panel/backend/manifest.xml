@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:theme>
+	<title>Panel Admincp Theme</title>
+	<description>LinkoCMS Administrator panel theme.</description>
+	<author>Morrison Laju</author>
+	<version>1.0.0</version>
+</extension:theme>

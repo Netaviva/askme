@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:module>
+    <title>Profile</title>
+    <version>1.0</version>
+    <description>A module that enable users to have a profile page.</description>
+    <core>0</core>
+    <auto_enable>1</auto_enable>
+    <component>
+        <block label="Profile Widget" path="profile/widget"/>
+    </component>
+    <settings>
+        <setting var="profile.default_profile_module"
+                 type="select"
+                 data="profile:getDefaultSlugModules"
+                 title="Default User Profile Module"
+                 description="Enter a default module that you want to show to profile viewers like info,activity. But make sure the modules are availiable">info</setting>
+    </settings>
+
+</extension:module>

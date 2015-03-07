@@ -1,0 +1,37 @@
+<form action="<?php echo Linko::Url()->make('user:register'); ?>" method="post">
+	<div class="controls">
+		<div class="control-item">
+			<div class="control-item-label">
+				<label>
+					<?php echo Lang::t('user.username'); ?>: <?php echo Html::required(); ?>
+				</label>
+			</div>
+			<div class="control-item-data">
+				<input type="text" name="val[username]" />
+			</div>
+		</div>
+		<div class="control-item">
+			<div class="control-item-label">
+				<label>
+					<?php echo Lang::t('user.email'); ?>: <?php echo Html::required(); ?>
+				</label>
+			</div>
+			<div class="control-item-data">
+				<input type="text" name="val[email]" />
+			</div>
+		</div>
+		<div class="control-item">
+			<div class="control-item-label">
+				<label>
+					<?php echo Lang::t('user.password'); ?>: <?php echo Html::required(); ?>
+				</label>
+			</div>
+			<div class="control-item-data">
+				<input type="password" name="val[password]" />
+			</div>
+		</div>
+		<div class="control-bottom no-label">
+			<input type="submit" class="button" value="Register" />
+		</div>
+	</div>
+</form>

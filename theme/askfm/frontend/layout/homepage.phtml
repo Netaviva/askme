@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template|Linko_Template
+ */
+
+defined('LINKO') or exit;
+
+?>
+
+<?php $this->getLayout('snippets/header',array('homepage' => true)); ?>
+
+<div class="hero-unit" id="topography">
+    <div class="container">
+        <h1>Ask And Answer</h1>
+        <div id="site-details" class="span5 home-general-div ">
+            <div class="row">
+                <div class="span2">
+                    <img class="sit-details-images" src="<?php echo $this->getImage('site_snap.png','theme_image')?>">
+                    <img class="sit-details-images" src="<?php echo $this->getImage('site_snap2.png','theme_image')?>">
+                </div>
+                <div class="span3">
+                    <h4>LinkoCMS</h4>
+                    <p>
+                        LinkoCMS is the leading cms .....for creating different type of social networks that you may think of buuilding
+                    </p>
+                    <h4>Get it now...</h4>
+                    <p>
+                        <a class="btn btn-large btn-danger" href="http://www.codecayon.net">Download LinkoCMS</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="register-form-container" class="span3 home-general-div">
+            <h1 >Sign Up For Free</h1>
+            <?php echo $this->getTemplate('user/block/register',array('aVals' => array()))?>
+        </div>
+
+    </div>
+</div>
+<?php $this->getLayout('snippets/footer'); ?>

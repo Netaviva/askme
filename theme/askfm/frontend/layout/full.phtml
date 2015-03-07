@@ -1,0 +1,35 @@
+<?php
+/**
+ * @var $this Linko_Application_Template|Linko_Template
+ */
+defined('LINKO') or exit;
+?>
+<?php $this->getLayout('snippets/header'); ?>
+
+<div  class="container">
+    <?php if ($this->hasBlocks('topsiteAdvert')): ?>
+        <div class="row">
+            <div id="sidebar" class="span12">
+                <?php $this->plugin('block', array('position' => 'topsiteAdvert', 'title' => false)); ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <div class="row">
+        <div class="span12">
+            <?php $this->getLayout('snippets/flash'); ?>
+            <?php echo $this->getContent(); ?>
+        </div>
+    </div>
+
+    <?php if ($this->hasBlocks('bottomsiteAdvert')): ?>
+        <div class="row">
+            <div id="sidebar" class="span12">
+                <?php $this->plugin('block', array('position' => 'bottomsiteAdvert', 'title' => false)); ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
+</div>
+
+<?php $this->getLayout('snippets/footer'); ?>

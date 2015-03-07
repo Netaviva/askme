@@ -1,0 +1,75 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage module : controller_template - index.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div class="admincp-extension-module">
+	<div class="module">
+        <div class="module-header">
+            <h3>Modules</h3>
+	        <ul>
+		        <li>
+			        <a class="button small" href="<?php echo Linko::Url()->make('module:install'); ?>">Install Module</a>
+		        </li>
+	        </ul>
+        </div>
+        
+        <div class="module-content">
+            <table>
+            	<thead>
+                    <tr>
+                        <th style="width: 5%;"></th>
+                        <th style="width: 20%;">Name</th>
+                        <th style="width: 10%;">Version</th>
+                        <th style="width: 45%;">Description</th>
+                        <th style="width: 15%;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+    				<?php $iCnt = 0; foreach($aModules as $aModule): $iCnt++; ?>
+                    <tr class="<?php echo($iCnt % 2) ? 'odd' : 'even'; ?> ">
+                        <td class="module-icon">
+                            <img title="Installed" src="<?php echo Linko::Template()->getImage('module.png', 'module_module'); ?>" />
+                        </td>
+                        <td class="module-name">
+                            <?php echo ucwords($aModule['title']); ?>
+                        </td>
+                        <td class="module-version">
+                        	<?php echo $aModule['version']; ?>
+                        </td>
+                        <td class="module-description">
+                            <?php echo $aModule['description']; ?>
+                        </td>
+                        <td class="module-action">
+                        	<div class="button-group">
+                            <?php if($aModule['core']): ?>
+                            	Required
+                            <?php else: ?>
+    							<?php if($aModule['enabled']): ?>                            
+                                    <a class="btn btn-small" href="<?php echo Linko::Url()->make('module:admincp', array('action' => 'disable', 'module' => $aModule['module_id'])); ?>">Disable</a>
+                                <?php else: ?>
+                                    <a class="btn btn-small"<?php echo (!$aModule['installed'] ? ' disabled="disabled"' : ''); ?> href="<?php echo Linko::Url()->make('module:admincp', array('action' => 'enable', 'module' => $aModule['module_id'])); ?>">Enable</a>
+                                <?php endif; ?>  |                   
+                                <?php if($aModule['installed']): ?>                            
+                                    <a class="btn btn-small" href="<?php echo Linko::Url()->make('module:admincp', array('action' => 'uninstall', 'module' => $aModule['module_id'])); ?>">Uninstall</a>
+                                <?php else: ?>
+                                    <a class="btn btn-small" href="<?php echo Linko::Url()->make('module:admincp', array('action' => 'install', 'module' => $aModule['module_id'])); ?>">Install</a>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

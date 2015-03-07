@@ -1,0 +1,128 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage menu : controller_template - admincp\index.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<?php if($bMenuItems): ?>
+<div class="module">
+	<div class="module-header">
+		<h3>Menu (<?php echo $aMenu['menu_title']; ?>)</h3>
+        <ul>
+            <li>
+                <a href="<?php echo $this->url('menu:admincp:item:action', array('menu_id' => $aMenu['menu_id'], 'action' => 'add')); ?>" class="small button">
+                    Add Menu Link
+                </a>
+            </li>
+        </ul>
+	</div>
+
+    <div class="module-content">
+            <?php if(count($aMenuItems)): ?>
+            <table id="menu-item-list">
+                <thead>
+                <th style="5%">
+
+                </th>
+                <th style="width: 80%;">
+                    Title
+                </th>
+                <th style="width: 15%;">
+                    Actions
+                </th>
+                </thead>
+                <tbody>
+                    <?php foreach($aMenuItems as $aMenu): ?>
+                <tr id="menu-item-<?php echo $aMenu['menu_item_id']; ?>" style="cursor: move;">
+                    <td>
+                        <img src="<?php echo $this->getImage('icon/drag_handle.gif', 'asset_image'); ?>" />
+                    </td>
+                    <td>
+                        <?php echo $aMenu['menu_item_title']; ?>
+                    </td>
+                    <td>
+                        <a href="<?php echo Linko::Url()->make('menu:admincp:item:action', array('item_id' => $aMenu['menu_item_id'], 'menu_id' => $aMenu['menu_id'], 'action' => 'edit')); ?>">Edit</a> |
+
+                        <a href="<?php echo Linko::Url()->make('menu:admincp:item:action', array('item_id' => $aMenu['menu_item_id'], 'menu_id' => $aMenu['menu_id'], 'action' => 'delete')); ?>">Remove</a>
+                    </td>
+                </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+            <?php else: ?>
+            <div class="no-item">
+                <h4>No menu items</h4>
+            </div>
+            <?php endif; ?>
+    </div>
+</div>
+<?php else: ?>
+
+<div class="module">
+    <div class="module-header">
+        <h3>Menus</h3>
+        <ul>
+            <li>
+                <a class="button small" href="<?php echo $this->url('menu:admincp:action', array('action' => 'add')); ?>">
+                    Add Menu
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="module-content">
+	    <table id="menu-list">
+		    <thead>
+                <tr>
+	                <th style="50%">
+                        Menu Title
+	                </th>
+	                <th style="width: 20%;">
+		                Total Menu Items
+	                </th>
+	                <th style="width: 15%;">
+		                Location
+	                </th>
+                    <th style="width: 15%">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($aMenus as $aMenu): ?>
+                <tr>
+                    <td>
+                        <a href="<?php echo $this->url('menu:admincp', array('menu_id' => $aMenu['menu_id'])); ?>">
+                            <?php echo $aMenu['menu_title']; ?>
+                        </a>
+                    </td>
+	                <td>
+                        <?php echo $aMenu['total_menu_item']; ?>
+	                </td>
+	                <td>
+                        <?php echo $aMenu['menu_location']; ?>
+	                </td>
+                    <td>
+	                    <a href="<?php echo $this->url('menu:admincp:action', array('action' => 'edit', 'id' => $aMenu['menu_id'])); ?>">
+                            Edit
+	                    </a> |
+	                    <a href="<?php echo $this->url('menu:admincp:action', array('action' => 'delete', 'id' => $aMenu['menu_id'])); ?>">
+                            Delete
+	                    </a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+	    </table>
+    </div>
+</div>
+    <p>
+        <b>Tip: </b> Click on the menu to add menu links
+    </p>
+<?php endif; ?>

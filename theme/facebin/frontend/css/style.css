@@ -1,0 +1,412 @@
+body
+{
+	font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+	font-size: 11px;
+	color: #333333;
+}
+
+p{font-size: 11px; line-height: 25px;}
+
+a, a:hover
+{
+	color: #3b5998;
+	outline-style: none;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a:hover
+{
+	text-decoration: underline;
+}
+
+ul, li
+{
+	list-style: none;
+}
+
+h1, h2, h3, h4, h5
+{
+	font-size: 13px;
+	color: #333333;
+	margin: 0;
+	padding: 0;
+}
+
+h1{font-size: 22px;}
+h2{font-size: 20px;}
+h3{font-size: 18px;}
+
+h4, h5
+{
+	font-size: 11px;
+}
+
+#header
+{
+	background-color: #3b5998;
+	border-bottom: 5px solid #3B5998;
+}
+
+#header, #logo, #header a
+{
+	color: #FFFFFF;
+}
+
+#logo a
+{
+	display: block;
+	text-align: center;
+	font-size: 28px;
+	padding: 10px 0;
+}
+
+#main-menu
+{
+	background-color: #d4dae8;
+	padding: 5px 0;
+}
+
+#main-menu li
+{
+	float: left;
+	display: inline-block;
+}
+
+#main-menu ul > li > a
+{
+	color: #3b5998;
+	text-transform: uppercase;
+	display: block;
+	padding: 5px 20px;
+	position: relative;
+}
+
+#page-header
+{
+	padding: 8px 0;
+	border-bottom: 1px solid #eceff6;
+}
+
+#page-header h2
+{
+	font-size: 19px;
+}
+
+#sidebar, #main, #rightbar
+{
+	padding-top: 10px;
+}
+
+#sidebar
+{
+	border-right: 1px solid #eceff6;
+}
+
+#rightbar
+{
+	border-left: 1px solid #eceff6;
+}
+
+#main
+{
+
+}
+
+body.home #content *
+{
+	color: #FFF;
+}
+
+body.home
+{
+	background: url(../image/bigbg.jpg) left top;
+	min-height: 500px;
+}
+
+body.home .control-item-label,
+body.home .control-item-data
+{
+	float: none;
+	width: 100%;
+}
+
+body.home .control-item
+{
+	padding: 0;
+}
+
+body.home .control-item-label label
+{
+	text-align: left;
+	font-weight: bold;
+}
+
+body.home input[type="text"],
+body.home input[type="password"]
+{
+	color: #000 !important;
+	width: 100%;
+	border: 1px solid #777;
+}
+
+.home #main p
+{
+	font-size: 19px;
+	font-weight: 400;
+}
+
+/** Forms **/
+input.button, a.button
+{
+	-moz-user-select: none;
+	background-color: #2a49a5;
+	border: 1px solid #0823783;
+	color: #FFF;
+	box-shadow: 0 1px #4c6bc7 inset;
+	padding: 5px 10px !important;
+	text-decoration: none;
+	text-shadow: 0 -1px 0 #082783;
+	font-size: 12px;
+	font-family: verdana, sans-serif;
+}
+
+/****** Form Controls *****/
+form, textarea
+{
+	margin: 0px !important;
+}
+
+.controls
+{
+
+}
+
+.control-item
+{
+	padding: 10px 0;
+	clear: both;
+}
+
+.control-item-label
+{
+	float: left;
+	width: 25%;
+	text-align: right;
+	margin-right: 2%;
+}
+
+.control-item-label label
+{
+	line-height: 30px;
+}
+
+.control-item-data
+{
+	float: left;
+	width: 65%;
+}
+
+.control-bottom
+{
+	clear: both;
+	margin-left: 27%;
+	margin-top: 10px;
+}
+
+.control-bottom.no-label
+{
+	margin-left: 0;
+}
+
+.control-item-data.no-label
+{
+	margin-left: 0;
+	float: none;
+	width: 100%;
+}
+
+.control-item-data select
+{
+	border: 1px solid #CCCCCC;
+	padding: 6px;
+}
+
+.twelve input,
+.twelve select,
+.twelve textarea
+{
+	max-width: 60%;
+}
+
+.block .control-item
+{
+	padding: 0;
+}
+
+.block .control-bottom
+{
+	margin: 0;
+}
+
+.block .control-item-label,
+.block .control-item-data
+{
+	float: none;
+	width: 100%;
+	text-align: left;
+}
+/* #Blocks
+================================================== */
+.block
+{
+	border-bottom: 1px solid #eceff6;
+	padding: 10px 2px;
+}
+
+.block-title
+{
+	padding: 10px 10px;
+	background-color: #D4DAE8;
+	margin-bottom: 10px;
+}
+
+.block-inner > ul > li
+{
+	margin-bottom: 5px;
+}
+
+.block-inner > ul > li a
+{
+	background-color: #f7f7f7;
+	display: block;
+	padding: 5px;
+}
+
+.block-inner > ul > li a:hover
+{
+	background-color: #eceff6;
+}
+
+#global-message
+{
+	background-color: #fff9d7;
+	border: 1px solid #e2c822;
+	color: #333;
+	padding: 10px;
+	font-size: 13px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.error-list
+{
+	background-color: #ffebe8;
+	border: 1px solid #dd3c10;
+	color: #333;
+	padding: 10px;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.error-item
+{
+	margin-bottom: 5px;
+}
+
+/** Modules **/
+
+/* Blog */
+h2.post-title, h2.post-title a
+{
+	font-size: 18px;
+	padding: 5px 0;
+}
+
+.post-meta
+{
+	background-color: #f7f7f7;
+	color: #333;
+	border: 1px solid #CCC;
+	padding: 5px;
+	font-weight: bold;
+}
+
+.post-item
+{
+	padding: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #eceff6;
+}
+
+/** Footer **/
+#footer
+{
+	margin-top: 10px;
+	border-top: 1px solid #eceff6;
+}
+
+#footer li
+{
+	float: left;
+}
+
+#footer li a
+{
+	color: #575757;
+	font-weight: normal;
+	display: block;
+	padding: 10px 20px;
+}
+
+#copyright
+{
+	padding: 10px 20px;
+}
+
+ul.social-links li
+{
+	float: left;
+}
+
+ul.social-links li > a:hover
+{
+	text-decoration: none;
+}
+
+ul.social-links li > a > i
+{
+	font-size: 120px;
+	color: #fff;
+}
+
+/* #Clearing
+================================================== */
+
+.clearfix:before,
+.clearfix:after,
+.control-item:before,
+.control-item:after, #main-menu:after {
+	content: '\0020';
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0; }
+.control-item:after,
+.clearfix:after,
+#main-menu:after{
+	clear: both; }
+.control-item,
+.clearfix {
+	zoom: 1; }
+
+/* You can also use a <br class="clear" /> to clear columns */
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}

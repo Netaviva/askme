@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template|Linko_Template
+ */
+
+defined('LINKO') or exit;
+
+?>
+
+<div id="footer">
+    <div class="row">
+        <div class="twelve columns">
+            <div class="copyright">
+                <?php //echo $this->getSetting('footer_text'); ?>
+                <?php $this->plugin('menu', array('location' => 'footer_links')); ?>
+            </div>
+            <ul class="social-links">
+                <li class="link-facebook">
+                    <a href="<?php echo $this->getSetting('facebook_url'); ?>">
+                        <img alt="facebook" src="<?php echo $this->getImage('social/facebook.png', 'theme_image'); ?>" />
+                    </a>
+                </li>
+                <li class="link-twitter">
+                    <a href="<?php echo $this->getSetting('twitter_url'); ?>">
+                        <img alt="twitter" src="<?php echo $this->getImage('social/twitter.png', 'theme_image'); ?>" />
+                    </a>
+                </li>
+	            <li class="link-twitter">
+		            <a href="<?php echo $this->getSetting('googleplus_url'); ?>">
+			            <img alt="google" src="<?php echo $this->getImage('social/google.png', 'theme_image'); ?>" />
+		            </a>
+	            </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<?php echo $this->getFooter(); ?>
+</body>
+</html>

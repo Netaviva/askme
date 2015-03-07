@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template
+ */
+
+defined('LINKO') or exit();
+
+Linko::Template()
+    ->setStyle(array('jquery/chosen/chosen.css'), 'asset_css')
+    ->setScript(array('jquery/chosen.jquery.min.js'), 'asset_js', 'header');
+
+if(isset($layout) && $layout == 'login')
+{
+    Linko::Template()->setStyle('login.css', 'theme_css');
+}
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title><?php echo $this->getTitle(); ?></title>
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->getThemeUrl(); ?>css/foundation.css">
+    <?php echo $this->getHeader(); ?>
+</head>
+<body>

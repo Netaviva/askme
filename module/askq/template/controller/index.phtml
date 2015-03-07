@@ -1,0 +1,37 @@
+
+<h3 id="questions-title"><?php echo Lang::t('askq.questions')?></h3>
+<div id="questions-container">
+
+    <?php foreach($aResult as $key => $value):?>
+
+    <div class="question-item" id="question-item-<?php echo $value['question_id']?>">
+        <h5><img class="questions-icons" src="<?php echo $this->getImage('icon.jpg','module_askq')?> "><?php echo $value['question_content']?></h5>
+
+        <?php if($value['is_anonymous'] == '0'):?>
+
+        <div class="questionaire-details clearfix">
+
+            <div class="questionaire-avatar">
+                <?php $questionaire = Linko::Model('user')->getUser($value['questionaire_user_id'])?>
+                <img src="<?php echo $this->getImage(array('user' => $questionaire, 'size' => 50), 'user_image')?>"/>
+            </div>
+            <div class="questionaire-content">
+                <a href="<?php echo Linko::Url()->make('user:profile',array('username' => $questionaire['username']))?>">
+                    <?php echo ucwords($questionaire['firstname'].' '. $questionaire['lastname']) ?>
+                </a>
+            </div>
+        </div>
+
+        <?php endif?>
+        <span class="question-time"><?php echo Date::timeAgo($value['time']);?></span>
+       <br/><br/>
+        <a href="#" question_id="<?php echo $value['question_id']?>" id="question-answer-button-<?php echo $value['question_id']?>" class="question-answer-button">
+            <img class="questions-icons" src="<?php echo $this->getImage('answer_icon.png','module_askq')?> ">
+            <?php echo Lang::t('askq.answer_question')?>
+        </a>
+    </div>
+
+    <?php endforeach?>
+
+    <?php $this->plugin('pager'); ?>
+</div>

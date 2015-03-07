@@ -1,0 +1,170 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage page : controller_template - admincp\action.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<form id="add-page" action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+    <?php if($bEdit): ?>
+    <input type="hidden" name="val[component_id]" value="<?php echo $aPage['component_id']; ?>" />
+    <input type="hidden" name="val[page_type]" value="<?php echo $aPage['page_type']; ?>" />
+    <?php endif; ?>
+<div class="module">
+    <div class="module-header">
+        <h3>Page Details</h3>
+    </div>
+    <div class="module-content">
+        <div class="controls">
+	        <div class="control-group">
+		        <h4>General</h4>
+		        <div class="control-item">
+			        <div class="control-item-label">
+				        Page Title:
+			        </div>
+			        <div class="control-item-data">
+				        <input size="60" type="text" name="val[page_title]" class="input-text" value="<?php echo Arr::get($aVals, 'page_title', Arr::get($aPage, 'page_title', '')); ?>" />
+			        </div>
+		        </div>
+
+		        <div class="control-item">
+			        <div class="control-item-label">
+				        <label for="page-url">Page Url:</label>
+			        </div>
+			        <div class="control-item-data">
+				        <input class="input-text" type="text" id="page-url" name="val[page_url]" value="<?php echo Arr::get($aVals, 'page_url', Arr::get($aPage, 'page_url', '')); ?>" />
+				        <br />
+                        <?php echo Linko::Url()->make(); ?><span id="js-page-url"><?php echo Arr::get($aPage, 'page_url'); ?></span>
+			        </div>
+		        </div>
+
+		        <script>
+			        $('#page-url').keyup(function(){
+				        var uri = $(this).val();
+				        $('#js-page-url').html(uri);
+			        });
+		        </script>
+		        <div class="control-item">
+			        <div class="control-item-label">
+				        <label>Page Status:</label>
+			        </div>
+			        <div class="control-item-data">
+				        <select name="val[page_status]">
+					        <option<?php echo((Arr::get($aVals, 'page_status', Arr::get($aPage, 'page_status', '')) == 0) ? ' selected="selected"' : null); ?> value="0">Hidden</option>
+					        <option<?php echo((Arr::get($aVals, 'page_status', Arr::get($aPage, 'page_status', '')) == 1) ? ' selected="selected"' : null); ?> value="1">Active</option>
+				        </select>
+			        </div>
+		        </div>
+
+                <?php if($bEdit == false): ?>
+		        <div class="control-item">
+			        <div class="control-item-label">
+				        <label>Add to menu:</label>
+			        </div>
+			        <div class="control-item-data">
+				        <input type="checkbox" name="val[add_menu]" />
+			        </div>
+		        </div>
+                <?php endif; ?>
+
+		        <div class="control-item">
+			        <div class="control-item-label">
+				        <label>Is Homepage:</label>
+			        </div>
+			        <div class="control-item-data">
+				        <input type="checkbox" name="val[is_homepage]"<?php echo Arr::get($aVals, 'is_homepage', Arr::get($aPage, 'is_homepage', '')) == 1 ? ' checked="checked"' : null; ?> />
+			        </div>
+		        </div>
+
+		        <div class="control-item">
+			        <div class="control-item-label">
+				        <label>Template Layout:</label>
+			        </div>
+			        <div class="control-item-data">
+				        <select name="val[layout]">
+                            <?php $this->plugin('option', array(
+                            'data' => $aLayouts,
+                            'value_key' => 'name',
+                            'title_key' => 'title'
+                        )); ?>
+				        </select>
+			        </div>
+		        </div>
+	        </div> <!-- end .control-group -->
+
+	        <div class="control-group">
+		        <h4>Meta Data</h4>
+
+		        <div class="control-item">
+			        <div class="control-item-label">
+				        <label for="page-keywords">Meta Title:</label>
+			        </div>
+			        <div class="control-item-data">
+				        <input class="input-text" type="text" id="meta-title" name="val[meta_title]" value="<?php echo Arr::get($aVals, 'meta_title', Arr::get($aPage, 'meta_title', '')); ?>" />
+			        </div>
+		        </div>
+
+		        <div class="control-item">
+			        <div class="control-item-label">
+				        <label for="meta-keywords">Meta Keywords:</label>
+			        </div>
+			        <div class="control-item-data">
+				        <input class="input-text" type="text" id="meta-keywords" name="val[meta_keywords]" value="<?php echo Arr::get($aVals, 'meta_keywords', Arr::get($aPage, 'meta_keywords', '')); ?>" />
+			        </div>
+		        </div>
+
+		        <div class="control-item">
+			        <div class="control-item-label">
+				        <label for="meta-description">Meta Description:</label>
+			        </div>
+			        <div class="control-item-data">
+				        <textarea id="meta-description" name="val[meta_description]"><?php echo Arr::get($aVals, 'meta_description', Arr::get($aPage, 'meta_description', '')); ?></textarea>
+			        </div>
+		        </div>
+	        </div>
+
+	        <div class="control-group">
+		        <h4>Accessibility</h4>
+
+		        <div class="control-item">
+			        <div class="control-item-label">
+				        Dissallow Access:
+			        </div>
+			        <div class="control-item-data">
+				        <ul class="option-list">
+                            <?php foreach($aUserRoles as $aRole): ?>
+					        <li>
+						        <input type="checkbox" name="val[dissallow_access][]"<?php echo(in_array($aRole['role_id'], Arr::get($aVals, 'dissallow_access', Arr::get($aPage, 'dissallow_access', array()))) ? ' checked="checked"' : null) ; ?> value="<?php echo $aRole['role_id']; ?>" />
+                                <?php echo $aRole['role_title']; ?>
+					        </li>
+                            <?php endforeach; ?>
+				        </ul>
+			        </div>
+		        </div>
+
+	        </div>
+
+            <?php if($bEdit == false || ($bEdit && $aPage['page_type'] != 'module')): ?>
+	        <div class="control-group">
+		        <h4>Page Content</h4>
+		        <div class="control-item">
+			        <div class="control-item-data no-label">
+				        <textarea rows="20" cols="0" name="val[page_content]" class="js-editor-content"><?php echo Arr::get($aVals, 'page_content', Arr::get($aPage, 'page_content', '')); ?></textarea>
+			        </div>
+		        </div>
+	        </div>
+            <?php endif; ?>
+        </div>
+    </div>
+    
+    <div class="module-footer">
+        <input type="submit" class="button" name="process[edit_page]" value="<?php echo $bEdit ? 'Save' : 'Create'; ?> Page" />
+    </div>
+</div>
+</form>

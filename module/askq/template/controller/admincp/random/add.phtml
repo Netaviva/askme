@@ -1,0 +1,34 @@
+<form action="<?php echo Linko::Url()->make('askq:admincp:random:add')?>" method="post">
+<div class="module">
+    <div class="module-header">
+        <h3>Add Random Questions</h3>
+        <ul>
+            <li>
+                <a class="button small" href="<?php echo Linko::Url()->make('askq:admincp:random')?>">All Random Questions</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="module-content">
+        <div class="controls">
+            <div class="control-item clearfix">
+                <div class="control-item-label">
+                 Question Content
+                </div>
+
+                <div class="control-item-data">
+                    <div class="control-data-wrap">
+
+                        <textarea name="text"></textarea>
+                    </div> <!-- End .controls -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="module-footer">
+        <input class="button" type="submit" value="Add Question" />
+    </div>
+</div>
+
+</form>

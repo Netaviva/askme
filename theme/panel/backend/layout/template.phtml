@@ -1,0 +1,113 @@
+<?php 
+
+defined('LINKO') or exit();
+
+/**
+ * @var $this Linko_Application_Template
+ */
+
+$this->setScript('panel.js', 'theme_js');
+
+$sSelectedMenu = Linko::Model('Admincp')->getSelectedMenu();
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><?php echo $this->getTitle(); ?></title>
+<?php echo $this->getHeader(); ?>
+</head>
+
+<body>
+<div id="wrapper">
+	<div id="header-wrapper" class="clearfix">
+    	<div id="header">
+        	<h1 id="logo">
+        		AdminCP
+            </h1>
+        </div>
+    </div>
+    
+	<div id="content-wrapper" class="clearfix">
+    	<div id="sidebar">
+        	<ul>
+                <?php foreach(Linko::Model('Admincp')->getMenu() as $sTitle => $mLink): ($bSub = (is_array($mLink) ? true : false));  ?>
+                <li class="<?php echo($bSub ? 'drop-menu ' : '') . ($sSelectedMenu == $sTitle ? 'active' : '');  ?>">
+                    <?php if($bSub): ?>
+                        <a href="#">
+                            <?php echo $sTitle; ?>
+                        </a>
+                        <ul>
+                            <?php foreach($mLink as $sTitle2 => $mLink2): ?>
+                            <li>
+                                <a href="<?php echo $mLink2; ?>">
+                                    <?php echo $sTitle2; ?>
+                                </a>
+                            </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php else: ?>
+                        <a href="<?php echo $mLink; ?>">
+                            <?php echo $sTitle; ?>
+                        </a>
+                    <?php endif; ?>
+                </li>    
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        
+    	<div id="content">
+			<?php /* Build Breadcrumb Links */ ?>
+            <?php if($this->hasBreadcrumbLinks()): ?>
+            <div class="breadcrumb">
+                <?php $iCnt = 0; foreach($this->getBreadcrumbLinks() as $sTitle => $mLink): $iCnt++; ?>
+					<?php if($mLink == null): ?>
+                    <span>
+						<?php echo $sTitle; ?>
+                    </span>
+                    <?php else: ?>
+                    <a href="<?php echo $mLink; ?>">
+						<?php echo $sTitle; ?>
+                    </a>
+                    <?php endif; ?>
+                    <?php echo ($iCnt != count($this->getBreadcrumbLinks()) ? '&raquo;' : null); ?>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
+
+            <?php /* Build Breadcrumb Title*/ ?>
+            <?php if($this->hasBreadcrumbTitle()): ?>
+            <h2 id="title">
+            	<?php echo $this->getBreadcrumbTitle(); ?>
+            </h2>
+            <?php endif; ?>
+
+            <?php /* Start - Error Message*/ ?>
+            <?php if(Linko::Error()->hasErrors()): ?>
+            <div class="error">
+            	<?php foreach(Linko::Error()->get() as $sError): ?>
+                <div class="error-item">
+                	<?php echo $sError; ?>
+                </div>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
+            <?php /* End - Error Message*/ ?>
+
+            <?php /* Build Flash Message */ ?>
+			<?php if(Linko::Flash()->hasMessage()): ?>
+            <div class="global-message <?php echo Linko::Flash()->getType(); ?>">
+                <?php echo Linko::Flash()->getMessage(); ?>
+            </div>
+            <?php endif; ?>
+
+            <?php /* Get Controller Content */ ?>
+        	<?php echo $this->getContent(); ?>
+        </div>
+    </div>
+</div>
+
+<?php echo $this->getFooter(); ?>
+</body>
+</html>

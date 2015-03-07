@@ -1,0 +1,42 @@
+body
+{
+	background: #f9f9f9;
+}
+
+#content
+{
+	width: 100%;
+	float: none;
+	padding: 0;
+	margin: 0;
+}
+
+.login-container
+{
+	background: rgba(0, 0, 0, 0.1);
+	border-radius: 5px 5px 5px 5px;
+	margin: 10% auto;
+	padding: 5px;
+	width: 340px;
+}
+
+.login-inner
+{
+
+	border: 1px solid #CCCCCC;
+	border-radius: 4px 4px 4px 4px;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1) inset;
+	padding: 18px;
+}
+
+.form-control label
+{
+	display: block;
+	font-weight: bold;
+	padding: 10px 0;
+}
+
+.login-button
+{
+	margin: 10px auto;
+}

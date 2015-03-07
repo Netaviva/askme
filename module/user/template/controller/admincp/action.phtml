@@ -1,0 +1,46 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage user : controller_template - admincp\action.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+
+<div class="module">
+	<form action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+		<div class="module-header">
+			<h3><?php echo $bEdit ? 'Edit' : 'Add'; ?> User</h3>
+		</div>
+
+        <div class="module-content">
+	        <div class="control-item">
+		        <div class="control-item-label">
+			        <label for="username">Username:</label>
+		        </div>
+		        <div class="control-item-data">
+			        <input id="username" type="text" name="val[username]" value="<?php echo Arr::get($aUser, 'username', Arr::get($aVals, 'username', '')); ?>" />
+		        </div>
+	        </div>
+
+	        <div class="control-item">
+		        <div class="control-item-label">
+			        <label for="email">Email:</label>
+		        </div>
+		        <div class="control-item-data">
+			        <input id="email" type="text" name="val[email]" value="<?php echo Arr::get($aUser, 'email', Arr::get($aVals, 'email', '')); ?>" />
+		        </div>
+	        </div>
+        </div>
+
+		
+		<div class="module-footer">
+			<input type="submit" value="<?php echo $bEdit ? 'Update' : 'Create'; ?> User" class="button" />
+		</div>
+	</form>
+</div>

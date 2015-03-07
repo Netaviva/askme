@@ -1,0 +1,12 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage user : controller_template - admincp\index.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?><div class="module">	<div class="module-header">		<h3>All Users</h3>	</div>		<table>		<thead>            <tr>                <th style="width: 35%;">                    Name                </th>                <th style="width: 50%;">                    Email                </th>                <th style="width: 15%;">                </th>            </tr>		</thead>				<tbody>			<?php foreach($aUsers as $aUser): ?>			<tr>				<td>					<?php echo $aUser['username']; ?>				</td>				<td>					<?php echo $aUser['email']; ?>				</td>								<td>					<a href="<?php echo Linko::Url()->make('user:admincp:action', array('action' => 'edit', 'id' => $aUser['user_id'])); ?>">Edit</a> | 										<a href="">Delete</a>				</td>			</tr>			<?php endforeach; ?>		</tbody>	</table></div>

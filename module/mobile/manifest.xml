@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:module>
+	<title>Mobile</title>
+	<version>1.0.0</version>
+	<description>Mobile version .</description>
+	<auto_enable>1</auto_enable>
+
+	<author>Morrison Laju</author>
+	<author_url>http://morrelinko.com</author_url>
+
+	<component>
+		<controller label="Mobile"
+		            route_id="mobile:core"
+		            route_url="mobile(/[uri])"
+		            route_rule="uri=.*"
+		            path="mobile/index">
+		</controller>
+	</component>
+</extension:module>

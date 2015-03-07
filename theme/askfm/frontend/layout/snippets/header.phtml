@@ -1,0 +1,88 @@
+<?php
+/**
+ * @var $this Linko_Application_Template|Linko_Template
+ */
+defined('LINKO') or exit;
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title><?php echo $this->getTitle(); ?></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <style type="text/css">
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+        </style>
+        <?php echo $this->getHeader(); ?>
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <!-- Le fav and touch icons -->
+        <link rel="shortcut icon" href="<?php echo $this->getThemeUrl(); ?>image/ico/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo $this->getThemeUrl(); ?>image/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo $this->getThemeUrl(); ?>image/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo $this->getThemeUrl(); ?>image/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="<?php echo $this->getThemeUrl(); ?>image/ico/apple-touch-icon-57-precomposed.png">
+    </head>
+
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand" href="<?php echo Linko::Url()->make() ?>"><?php echo Linko::Module()->getSetting('page.site_title'); ?></a>
+                    <div class="nav-collapse collapse">
+                        <?php echo $this->plugin('menu', array('location' => 'main_menu', 'depth' => 1, 'container_class' => 'nav')); ?>
+                    </div>
+                    
+                    <?php if (Linko::Module()->isModule('askq')): ?> 
+                    <?php echo $this->plugin('askq'); ?>
+                    <?php endif; ?>
+                    
+                    <?php if (Linko::Module()->isModule('messages')): ?>                    
+                        <?php echo $this->plugin('messages', array('add_mini' => false, 'icon_class' => 'icon-envelope icon-white')); ?>
+                    <?php endif; ?>
+
+                    <?php if (Linko::Model('user/auth')->isUser()): ?>
+                        <!-- user dropdown starts -->
+                        <div class="btn-group pull-right" >
+                            <a href=""></a>
+                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="icon-user"></i><span class="hidden-phone">Menu</span>
+                                <span class="caret"></span>
+                            </a>
+                            <?php echo $this->plugin('menu', array('location' => 'account_menu', 'depth' => 1, 'container_class' => 'dropdown-menu')); ?>       
+                        </div>
+                        <div class="pull-right theme-container">
+                            <a class="btn btn-success username-btn" href="<?php echo Linko::Url()->make('user:profile', array('username' => Linko::Model('user/auth')->getUserBy('username'))) ?>"><?php echo Linko::Model('user/auth')->getUserBy('username'); ?></a>      
+                        </div>
+                    <?php else: ?>
+                        <div class="pull-right">
+                            Have Account?
+                            <div class="btn-group">
+                                <button data-modal="login-form-submit" type="submit" class="btn btn-success">Sign in</button>
+                            </div>
+                        </div>
+                        <script type="text/x-template" title="Please Login" id="login-form-submit-modal" data-type="form" data-action="<?php echo Linko::Url()->make('user:login'); ?>" data-method="post">
+                            <div id="login-modal-form">
+                                <input type="text" name="val[username]"  placeholder="Username"><br/><br/>
+                                <input type="password" name="val[password]"  placeholder="Password"><br/>
+                                <a href="<?php echo Linko::Url()->make('user:reset-password'); ?>">Forgot your Password?</a>
+                            </div>
+                            </script>
+                        <?php endif ?>
+                    </div>
+                </div>
+            </div>
+
+

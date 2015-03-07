@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:theme>
+	<title>Facebin</title>
+	<description>Facebin facebook mini theme. This theme is not meant to replicate facebook, but to show how linkocms can have a social feel.</description>
+	<author>Morrison Laju</author>
+	<version>1.0.0</version>
+
+	<layouts>
+		<layout name="template" title="Main" type="full">
+			<position name="sidebar">Sidebar</position>
+			<position name="rightbar">Rightbar</position>
+		</layout>
+
+		<layout name="blank" title="Blank Theme" type="full">
+		</layout>
+	</layouts>
+
+	<menu>
+		<location var="main_menu">Main Menu</location>
+		<location var="footer_links">Footer Links</location>
+	</menu>
+
+	<settings>
+		<setting var="home_text">Sitename is free and always will be.</setting>
+		<setting var="facebook_url">http://facebook.com</setting>
+		<setting var="twitter_url">http://twitter.com</setting>
+	</settings>
+
+</extension:theme>

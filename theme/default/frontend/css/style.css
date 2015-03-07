@@ -1,0 +1,556 @@
+body
+{
+    background-color: #F5F5F5;
+	height: 100%;
+}
+
+ul, ol, li
+{
+    margin: 0;
+    list-style:  none;
+}
+
+#header
+{
+    background: #292929;
+    border-bottom: 1px solid #111111;
+    box-shadow: none;
+    height: 50px;
+}
+
+#logo
+{
+    color: #5FBED8;
+    font-size: 28px;
+	text-transform: uppercase;
+    margin: 0;
+    line-height: 50px;
+    float: left;
+    display: inline-block;
+}
+
+#main-menu
+{
+    float: right;
+}
+
+#main-menu ul li
+{
+    float: left;
+    position: relative;
+}
+
+#main-menu ul > li > a
+{
+    color: #FFF;
+    text-transform: uppercase;
+    display: block;
+    line-height: 50px;
+    font-size: 13px;
+    padding: 0 15px;
+    position: relative;
+    text-decoration: none;
+}
+
+#main-menu ul ul a
+{
+	color:#171717;
+	min-width: 150px;
+	display: block;
+	white-space: nowrap;
+	float: none;
+	margin: 3px;
+}
+
+#main-menu ul ul
+{
+	display: none;
+	position: absolute;
+	top: 45px;
+	left: 0;
+	z-index: 9999;
+	border: 1px solid #ccc;
+	background: #f3f3f3;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+#main-menu li:hover > ul
+{
+    display: block;
+    opacity:1;
+    visibility:visible;
+    margin:0;
+}
+
+#main-menu ul ul:before
+{
+	border-color: transparent transparent #f3f3f3;
+	border-style: solid;
+	border-width: 12px;
+	content: "";
+	height: 0;
+	left: 23px;
+	position: absolute;
+	top: -24px;
+	width: 0;
+	z-index: 999;
+}
+
+#main-menu ul ul:after
+{
+	border-color: transparent transparent #f3f3f3;
+	border-style: solid;
+	border-width: 12px;
+	content: "";
+	height: 0;
+	left: 23px;
+	position: absolute;
+	top: -23px;
+	width: 0;
+	z-index: 999;
+}
+
+#main-menu ul ul a:hover
+{
+	text-shadow: none;
+	color: #fff;
+	margin: 3px;
+	background-color: #0088CC;
+}
+
+/** End Menu **/
+
+#page-header
+{
+    background-color: #53B2D5;
+}
+
+#page-header h2
+{
+    color: #FFFFFF;
+    font-size: 25px;
+    margin: 0;
+    padding: 10px 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+#main
+{
+    background-color: white;
+    border-radius: 4px 4px 4px 4px;
+    margin-bottom: 30px;
+    margin-top: 25px;
+    padding: 23px 25px 20px;
+    min-height: 200px;
+}
+
+#leftbar,
+#sidebar
+{
+    margin-top: 20px;
+}
+
+/**
+    Blocks
+*/
+#sidebar .block
+{
+
+}
+
+#leftbar .block .block-title,
+#sidebar .block .block-title
+{
+    font-size: 24px;
+}
+
+#leftbar .block .block-inner > ul > li,
+#sidebar .block .block-inner > ul > li
+{
+    background-color: #FFFFFF;
+    border-radius: 4px 4px 4px 4px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+}
+
+#leftbar .block .block-inner > div,
+#sidebar .block .block-inner > div
+{
+    background-color: #FFFFFF;
+    border-radius: 4px 4px 4px 4px;
+    padding: 5px 10px;
+    line-height: 20px;
+}
+
+.block .control-item
+{
+	padding: 0;
+}
+
+.block .control-item-label,
+.block .control-item-data
+{
+	float: none;
+	width: 100%;
+	text-align: left;
+}
+
+.block .control-bottom
+{
+	margin-left: 0;
+	margin-top: 0;
+}
+
+/** End Block **/
+
+#footer
+{
+    background: #1B1B1B;
+    color: #999999;
+    font-size: 0.8em;
+    padding: 18px 0;
+}
+
+#footer .copyright
+{
+    float: left;
+}
+
+#footer ul.social-links
+{
+    float: right;
+}
+
+ul.social-links li
+{
+    background-color: #444444;
+    border-radius: 3px 3px 3px 3px;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 2px 0;
+    width: 28px;
+    height: 28px;
+}
+
+ul.social-links img
+{
+    width: 36px;
+}
+
+/**
+ * Standards
+ */
+
+/****** Form Controls *****/
+form, textarea
+{
+	margin: 0px !important;
+}
+
+.controls
+{
+
+}
+
+.control-item
+{
+	padding: 10px 0;
+	clear: both;
+}
+
+.control-item-label
+{
+	float: left;
+	width: 25%;
+	text-align: right;
+	margin-right: 2%;
+}
+
+.control-item-label label
+{
+	line-height: 30px;
+}
+
+.control-item-data
+{
+	float: left;
+	width: 65%;
+}
+
+.control-bottom
+{
+	clear: both;
+	margin-left: 27%;
+	margin-top: 10px;
+}
+
+.control-bottom.no-label
+{
+	margin-left: 0;
+}
+
+.control-item-data.no-label
+{
+	margin-left: 0;
+	float: none;
+	width: 100%;
+}
+
+.control-item-data select
+{
+	border: 1px solid #CCCCCC;
+	padding: 6px;
+}
+
+/**
+ * Pagination
+ */
+
+.pager
+{
+	font-size: 16px;
+	height: 30px;
+	margin: 15px 0 11px;
+}
+
+.pager ul
+{
+	box-shadow: none;
+	border-radius: 0px;
+	background: transparent;
+	height: 30px;
+}
+
+.pager ul > li
+{
+	margin-right: 8px;
+	border-radius: 0px;
+	display: inline-block;
+}
+
+.pager ul > li a
+{
+	background-color: #4BCAF3;
+	border: 1px solid #2795BA;
+	color: #333333;
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	margin: 0;
+	text-align: center;
+	width: 32px;
+}
+
+.pager ul > li a:hover
+{
+	color: #ffffff;
+	background-color: #2795BA;
+}
+
+/**
+ * Specifics
+ */
+#sidebar .block .blog-category span
+{
+    display: block;
+    color: #545454;
+    font-weight: bold;
+    float: right;
+}
+
+/* User profile **/
+.user-profile-info
+{
+	float: left;
+	width: 30%;
+}
+
+.user-profile-info img
+{
+	background-color: #DCDCDC;
+	border: 1px solid #CCC;
+	padding: 5px;
+}
+
+.user-profile-data
+{
+	float: left;
+	width: 70%;
+	margin-left: 0;
+}
+
+.user-profile-data li
+{
+	border-bottom: 1px solid #D4D4D4;
+	padding: 10px 0;
+}
+
+.user-profile-data li span
+{
+	font-weight: bold;
+}
+
+/* #Clearing
+================================================== */
+
+.clearfix:before,
+.clearfix:after,
+.control-item:before,
+.control-item:after {
+    content: '\0020';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0; }
+.control-item:after,
+.clearfix:after {
+    clear: both; }
+.control-item,
+.clearfix {
+    zoom: 1; }
+
+/* You can also use a <br class="clear" /> to clear columns */
+.clear {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+/*================= Items ========================*/
+
+/** Toast Notification */
+.notify-toast-container
+{
+	padding: 5px 10px;
+	background-color: #666666;
+	border:  2px solid #555555;
+	color: #f4f4f4;
+	font-weight: bold;
+	opacity: 0.9;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	z-index: 999999;
+}
+
+/** Flash Notifications Wrapper */
+.notify-flash-wrapper
+{
+	width: 100%;
+}
+
+#notify-flash-wrapper-bottom
+{
+	border-bottom:  1px solid #A3D385;
+}
+
+#notify-flash-wrapper-top
+{
+	border-bottom:  1px solid #A3D385;
+}
+
+/** Flash Notification */
+.notify-flash-container
+{
+	color: #0D593D;
+	background-color: rgba(189, 242, 158, 0.8);
+	background-repeat: repeat-x;
+	width: 100%;
+	border-bottom:  1px solid #A3D385;
+	font-weight: bold;
+	text-align:  center;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+	height: 70px;
+	line-height: 70px;
+}
+
+.notify-flash-container:last-child
+{
+	border: none;
+}
+
+/** Sticky Notifications Wrapper */
+.notify-sticky-wrapper
+{
+	width: 311px;
+}
+
+/** Sticky Notification */
+.notify-sticky-container
+{
+	color: #FFF;
+	min-width: 150px;
+	text-align: center;
+	padding: 5px 10px;
+	border: 3px solid #111;
+	background-color: #333333;
+	background-color: rgba(0, 0, 0, 0.85);
+	margin-bottom: 10px;
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.5);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+/** Positioning */
+.notify-position-left
+{
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+.notify-position-right
+{
+	margin-right: 20px;
+	margin-top: 20px;
+}
+
+.notify-position-center-left
+{
+	margin-left: 20px;
+}
+
+.notify-position-center-right
+{
+	margin-right: 20px;
+}
+
+.notify-position-bottom-left
+{
+	margin-left: 20px;
+	margin-bottom: 20px;
+}
+
+.notify-position-bottom-center
+{
+	margin-bottom: 20px;
+}
+
+.notify-position-bottom-right
+{
+	margin-bottom: 20px;
+	margin-right: 20px;
+}
+
+.notify-position-top-left
+{
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+.notify-position-top-center
+{
+	margin-top: 20px;
+}
+
+.notify-position-top-right
+{
+	margin-top: 20px;
+	margin-right: 20px;
+}

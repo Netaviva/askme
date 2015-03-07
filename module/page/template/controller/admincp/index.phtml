@@ -1,0 +1,90 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage page : controller_template - admincp\index.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div class="module">
+	<div class="module-header">
+        <h3>Pages</h3>
+    </div>
+	<?php if(count($aPages)): ?>
+	<table width="100%">
+    	<thead>
+            <tr>
+                <th style="width: 5%;">
+                    <!-- Icon -->
+                </th>
+                <th style="width: 50%;">
+                    Title
+                </th>
+                <th style="width: 5%;">
+                    Home
+                </th>
+	            <th style="width: 10%;">
+		            Module
+	            </th>
+                <th style="width: 15%;">
+                    Status
+                </th>
+                <th style="width: 15%;">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>   
+		<?php foreach($aPages as $aPage): ?>
+            <tr id="page-<?php echo $aPage['page_id']; ?>">
+            	<td>
+                	<img src="<?php echo $this->getImage('file.png', 'module_page'); ?>" />
+                </td>
+            	<td>
+                	<?php echo $aPage['page_title']; ?>
+                </td> 
+                <td>
+                    <div title="Home Page" class="js-homepage-drop js-ui-homepage-drop">
+                        <?php if((bool)$aPage['is_homepage']): ?>
+                            <img class="js-homepage-drag" src="<?php echo $this->getImage('home.png', 'module_page'); ?>" />
+                        <?php endif; ?>
+                    </div>
+                    
+                </td>
+	            <td>
+                	<?php echo $aPage['module_id']; ?>
+	            </td>
+	            <td>
+                	<span class="page-status <?php echo strtolower($aPage['page_status']); ?>">
+						<?php echo $aPage['page_status'] == 1 ? 'Active' : 'Inactive'; ?>
+                    </span>
+                </td>   
+                <td>
+                	<a href="<?php echo Linko::Url()->make('page:admincp:action', array('action' => 'edit', 'id' => $aPage['page_id'])); ?>" class="edit">
+                    	Edit
+                    </a> | 
+                    <a href="<?php echo Linko::Url()->make('page:admincp:action', array('action' => 'delete', 'id' => $aPage['page_id'])); ?>" class="delete">
+                        Delete
+                    </a>
+                </td>            
+            </tr>
+        <?php endforeach; ?>
+    	</tbody>
+    </table>
+<?php endif; ?>
+</div>
+
+<div class="table">
+	<div class="table-header">
+    	Tips
+    </div>
+    
+    <p>
+        <b>Setting Homepage: </b>Drag and drop the Home icon on the page you want to set as homepage
+    </p>
+</div>

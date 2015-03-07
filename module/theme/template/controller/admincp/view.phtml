@@ -1,0 +1,150 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage theme : controller_template - admincp\view.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<form action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+<div class="module">
+    <div class="module-header">
+        <h3>Theme Options</h3>
+    </div>
+
+    <div class="module-content">
+        <?php if(count($aSettings) ): ?>
+        <div class="controls">
+            <?php foreach($aSettings as $aSetting): ?>
+            <div class="control-item">
+                <div class="control-item-label">
+                    <label><?php echo $aSetting['label']; ?></label>
+                </div>
+                <div class="control-item-data">
+                    <?php echo $this->getTemplate('theme/block/setting_form', array('aForm' => $aSetting, 'aSetting' => $aTheme['setting'])); ?>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+        <?php else: ?>
+	    <div class="no-item">
+		    <h4>
+			    No Settings Available.
+		    </h4>
+	    </div>
+        <?php endif; ?>
+    </div>
+    <div class="module-footer">
+	    <input type="submit" class="button" value="Save" />
+    </div>
+</div>
+</form>
+
+<div class="module">
+	<div class="module-header">
+		<h3>Theme Detail</h3>
+	</div>
+    <div class="module-content">
+	    <div class="theme-detail">
+            <div class="controls">
+                <div class="control-item">
+                    <div class="control-item-label">
+                        Title:
+                    </div>
+                    <div class="control-item-data">
+                        <?php echo $aTheme['title']; ?>
+                    </div>
+                </div>
+	            <div class="control-item">
+		            <div class="control-item-label">
+			            Description:
+		            </div>
+		            <div class="control-item-data">
+                        <?php echo $aTheme['description']; ?>
+		            </div>
+	            </div>
+	            <div class="control-item">
+		            <div class="control-item-label">
+			            Author:
+		            </div>
+		            <div class="control-item-data">
+                        <?php if(isset($aTheme['author_url'])): ?>
+                        <a href="<?php echo $aTheme['author_url']; ?>">
+                            <?php echo $aTheme['author']; ?>
+                        </a>
+                        <?php else: ?>
+                        <?php echo $aTheme['author']; ?>
+                        <?php endif; ?>
+		            </div>
+	            </div>
+	            <div class="control-item">
+		            <div class="control-item-label">
+			            Version:
+		            </div>
+		            <div class="control-item-data">
+                        <?php echo $aTheme['version']; ?>
+		            </div>
+	            </div>
+                <?php if(isset($aTheme['url'])): ?>
+	            <div class="control-item">
+		            <div class="control-item-label">
+			            Theme Url:
+		            </div>
+		            <div class="control-item-data">
+                        <a href="<?php echo $aTheme['url']; ?>"> <?php echo $aTheme['url']; ?></a>
+		            </div>
+	            </div>
+                <?php endif; ?>
+
+                <?php if(isset($aTheme['license'])): ?>
+	            <div class="control-item">
+		            <div class="control-item-label">
+			            License:
+		            </div>
+		            <div class="control-item-data">
+                        <?php echo $aTheme['license']; ?>
+		            </div>
+	            </div>
+                <?php endif; ?>
+            </div>
+
+	    </div>
+    </div>
+</div>
+
+
+<div class="module">
+	<div class="module-header">
+		<h3>Theme Files</h3>
+	</div>
+	<div class="module-content">
+		<div class="theme-files">
+            <div class="controls">
+                <div class="control-item">
+                    <div class="control-item-label">
+                        Layouts
+                    </div>
+	                <div class="control-item-data">
+
+                        <?php if(Dir::exists($this->getThemePath($sType, $sTheme) . 'layout')): ?>
+                        <ul>
+		                <?php foreach(Dir::getFiles($this->getThemePath($sType, $sTheme) . 'layout', true) as $sFile): ?>
+                            <li>
+                                <?php echo str_replace(array($this->getThemePath($sType, $sTheme) . 'layout' . DS, DS), array('', '/'), $sFile); ?> &raquo; <span class="action edit">Edit</span>
+                            </li>
+                        <?php endforeach; ?>
+                        </ul>
+                        <?php else: ?>
+                            No Layout Found
+                        <?php endif; ?>
+	                </div>
+                </div>
+            </div>
+		</div>
+	</div>
+</div>

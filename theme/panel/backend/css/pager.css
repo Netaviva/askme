@@ -1,0 +1,41 @@
+.pager
+{
+    height: 35px;
+    margin: 10px 0;
+    position: relative;
+    text-align: left;
+}
+
+.pager li
+{
+    color: #808080;
+    display: inline;
+    float: left;
+    height: 32px;
+    line-height: 22px;
+    list-style-type: none;
+}
+
+.pager li:first-child a
+{
+    border-left: 1px solid #DFDFDF;
+}
+
+.pager li a
+{
+    background: #F9F9F9;
+    border-right: 1px solid #DFDFDF;
+    border-bottom: 1px solid #DFDFDF;
+    border-top: 1px solid #DFDFDF;
+    color: #333333;
+    display: block;
+    line-height: 32px;
+    padding: 0 12px;
+    text-decoration: none;
+}
+
+.pager li.pager-current a
+{
+    background-color: #555;
+    color: #FFF;
+}

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:theme>
+    <title>Social Askfm </title>
+    <description>Questions &amp; Answers social network theme based on bootstrap system.</description>
+    <author>LinkoDEV Team</author>
+    <author_url>http://linkodev.com</author_url>
+    <version>1.0.0</version>
+    <license>Copyright (c) Netaviva 2013. All Rights Reserved.</license>
+
+    <layouts>
+        <layout name="template" title="Main Template" type="full">
+            <position name="sidebar">Sidebar</position>
+            <position name="footer-block-1">Footer Block One</position>
+            <position name="topsiteAdvert">Top Page Advert</position>
+            <position name="bottomsiteAdvert">Bottom Page Advert</position>
+        </layout>
+        
+        <layout name="two_col_right" title="Two Columns Right Sidebar" type="full">
+        </layout>
+        
+        <layout name="full" title="Full Width" type="full">
+        </layout>
+        
+        <layout name="profile" title="Profile Template" type="full">
+            <position name="sidebar">Sidebar</position>
+        </layout>
+        
+         <layout name="home" title="Homepage Block Layout" type="partial">
+            <position name="homepageBlock">Homepage Block</position>
+        </layout>
+
+    </layouts>
+
+    <menu>
+        <location var="main_menu">Main Menu</location>
+        <location var="account_menu">Account Menu</location>
+        <location var="footer_links">Footer Links</location>
+    </menu>
+
+    <settings>
+
+        <setting var="facebook_url"
+                         type="text"
+                         label="Facebook Url"
+                         description="The link to your facebook profile">http://facebook.com
+        </setting>
+
+        <setting var="twitter_url"
+                         type="text"
+                         label="Twitter Url"
+                         description="The link to your twitter profile">http://twitter.com
+        </setting>
+
+        <setting var="googleplus_url"
+                         type="text"
+                         label="Google Plus Url"
+                         description="The link to your google plus profile">http://plus.google.com
+        </setting>
+
+        <setting var="footer_text"
+                         type="text"
+                         label="Footer Text"
+                         description=""><![CDATA[@copy; Copyright 2012. powered by LinkoCMS]]>
+        </setting>
+        <setting var="home_text" type="text" label="Homepage Text" description="">Ask/Answers Social Network</setting>
+    </settings>
+
+</extension:theme>

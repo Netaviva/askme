@@ -1,0 +1,331 @@
+<?php defined('LINKO') or exit;
+
+/**
+ * @package Profiler
+ * @author Morrison Laju <morrelinko@gmail.com>
+ */
+?>
+<div id="profiler-wrapper">
+	<div id="profiler">
+    	<h3 id="profiler-title">
+        	Profiler Client Info
+            <span id="profiler-minimize">show</span>
+        </h3>
+        <div id="profiler-content">
+            <!-- Build Tabs -->
+            <ul>
+            <?php foreach(Linko::Module()->getModel('Profiler')->get() as $sName => $mDetail): ?>
+                <li>
+                    <a href="#profiler-<?php echo $sName; ?>">
+                        <?php echo ucwords($sName); ?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+            <div class="clear"></div>
+            </ul>
+            <?php foreach(Linko::Profiler()->getDetails() as $sName => $mDetail): ?>
+            <div id="profiler-<?php echo $sName; ?>">
+                <div>
+				<?php if($sName == 'file'): /* FILE */ ?>
+                    <div class="profiler-panel-left">
+                    	<ul class="profile-var-list">
+                        <?php foreach($mDetail['info'] as $sKey => $sInfo): ?>
+                        	<li class="clearfix">
+                            	<?php echo Inflector::humanize($sKey); ?>
+                                <span>
+                                	<?php echo $sInfo; ?>
+                                </span>
+                            </li>
+                        <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <div class="profiler-panel-right">
+                        <table class="profiler-list">
+                        <?php foreach($mDetail['files'] as $sKey => $aFile): ?>
+                        <tr>
+                            <td>
+                            	<span class="profiler-right">
+                                    <span style="color: #700;"><?php echo $aFile['size']; ?></span>
+                                </span>
+                                <?php echo $aFile['file']; ?>
+                                
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                        </table>
+                    </div>
+                <?php elseif($sName == 'time'): /* TIME */ ?>
+                    <div class="profiler-panel-left">
+                    	<ul class="profile-var-list">
+                        <?php foreach($mDetail as $sKey => $sInfo): ?>
+                        	<li>
+                            	<?php echo Inflector::humanize($sKey); ?>
+                                <span>
+                                	<?php echo $sInfo; ?>
+                                </span>
+                            </li>
+                        <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <div class="profiler-panel-right">
+                        <h4 class="profiler-none">
+                        	No Logs Contained here
+                        </h4>
+                    </div> 
+                <?php elseif($sName == 'memory'): /* MEMORY */ ?>
+                    <div class="profiler-panel-left">
+                    	<ul class="profile-var-list">
+                        <?php foreach($mDetail as $sKey => $sInfo): ?>
+                        	<li>
+                            	<?php echo Inflector::humanize($sKey); ?>
+                                <span>
+                                	<?php echo $sInfo; ?>
+                                </span>
+                            </li>
+                        <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <div class="profiler-panel-right">
+                        <h4 class="profiler-none">
+                        	No Logs Contained here
+                        </h4>
+                    </div> 
+                <?php elseif($sName == 'request'): /* REQUEST */ ?>
+                    <div class="profiler-panel-left">
+                    	<ul class="profile-var-list">
+                        <?php foreach($mDetail['info'] as $sKey => $sInfo): ?>
+                        	<li>
+                            	<?php echo Inflector::humanize($sKey); ?>
+                                <span>
+                                	<?php echo $sInfo; ?>
+                                </span>
+                            </li>
+                        <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <div class="profiler-panel-right">
+                    	<div class="profiler-tabs">
+                        	<ul>
+                            	<?php foreach($mDetail as $sKey => $mData): ?>
+                                	<?php if($sKey == 'info'){continue;} ?>
+                                <li>
+                                	<a href="#profiler-tabs-<?php echo $sKey; ?>">
+                                    	$_<?php echo $sKey; ?>
+                                    </a>
+                                </li>	
+                                <?php endforeach; ?>
+                                                              
+                            </ul>
+                            <?php foreach($mDetail as $sTitle => $mData): ?>
+                            
+                            <div id="profiler-tabs-<?php echo $sTitle; ?>">
+                                <table cellspacing="0" class="profiler-list">
+                                	<?php echo is_string($mData) ? $mData : ''; ?>
+                                </table>                            
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php elseif($sName == 'session'): /* SESSION */ ?>
+                    <div class="profiler-panel-left">
+                        <h4 class="profiler-none">
+                        	No Logs Contained here
+                        </h4>
+                    </div>
+                    <div class="profiler-panel-right">
+                        <table class="profiler-list">
+                        	<?php echo $mDetail; ?>
+                        </table>
+                    </div> 
+                <?php elseif($sName == 'framework'): /* Framework */ ?>
+                    <div class="profiler-panel-left">
+                    	<ul class="profile-var-list">
+                        <?php foreach($mDetail['info'] as $sKey => $sInfo): ?>
+                        	<li class="clearfix">
+                            	<?php echo Inflector::humanize($sKey); ?>
+                                <span>
+                                	<?php echo $sInfo; ?>
+                                </span>
+                            </li>
+                        <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <div class="profiler-panel-right">
+                        <div class="profiler-tabs">
+                            <ul>
+                                <?php foreach($mDetail as $sKey => $aDetail): ?>
+                                	<?php if($sKey == 'info'){continue;} ?>
+                                    <li>
+                                        <a href="#profiler-tab-<?php echo $sKey; ?>">
+                                            <?php echo Inflector::humanize($sKey); ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                            
+							<?php foreach($mDetail as $sKey => $aDetail): ?>
+                            <?php if($sKey == 'info'){continue;} ?>
+                            <div id="profiler-tab-<?php echo $sKey; ?>">
+                            	<div>
+								<?php if($sKey == 'classes'): ?>
+                                    <ul class="profiler-list">
+                                    <?php foreach($aDetail as $sFKey => $sFValue): ?>
+                                        <li>
+                                            <i style="color: green;">class </i>
+                                            <?php echo get_class($sFValue); ?>
+                                            <span style="color: red;">()</span>
+                                            <span class="profiler-right"><?php echo $sFKey; ?></span>
+                                        </li>
+                                    <?php endforeach; ?>
+                                    </ul>
+                                <?php elseif($sKey == 'config'): ?>
+                                    <table class="profiler-list">
+                                    <?php echo $aDetail; ?>
+                                    </table>                                                              
+                                <?php endif; ?>
+                            	</div>
+                            </div>
+                            <?php endforeach; ?>                                                            
+                        </div>         
+                    </div>                                                            
+                <?php elseif($sName == 'custom'): /* CUSTOM */ ?>
+                    <div class="profiler-panel-left">
+                    	<ul class="profile-var-list">
+                        	<?php if(isset($mDetail['query'])): ?>
+                        	<li>
+                            	Total Queries
+                                <span>
+                                	<?php echo count($mDetail['query']); ?>
+                                </span>
+                            </li>
+                            <?php endif; ?>
+                        
+                        </ul>
+                    </div>
+                    <div class="profiler-panel-right">                        
+                        <div class="profiler-tabs">
+                            <ul>
+                                <?php foreach($mDetail as $sKey => $aDetail): ?>
+                                    <li>
+                                        <a href="#profiler-tab-<?php echo $sKey; ?>">
+                                            <?php echo Inflector::humanize($sKey); ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                            
+							<?php foreach($mDetail as $sKey => $aDetail): ?>
+                            <div id="profiler-tab-<?php echo $sKey; ?>">
+                            	<div>
+                                	<?php foreach($aDetail as $iKey => $aData): ?>
+                                    	<ul class="profiler-list">
+                                    	<?php foreach($aData as $sVar => $sValue): ?>
+                                        	<?php if(in_array($sVar, array('start_time', 'end_time', 'start_memory', 'end_memory'))): continue; ?>
+											<?php endif; ?>
+                                        	<li<?php echo ($sVar == 'name' ? ' class="list-header"' : null); ?>>
+                                            	<?php if($sVar == 'name'): ?>
+                                                	<?php echo '#'.$iKey; ?>
+                                                <?php else: ?>
+                                                	<?php echo Inflector::humanize($sVar); ?>
+                                                    <span class="profiler-right"> <?php echo $sValue; ?> </span>
+                                                <?php endif; ?>
+                                            </li>
+                                        <?php endforeach; ?>
+                                       	</ul>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>                                                            
+                        </div>                        
+                    </div> 
+                <?php elseif($sName == 'route'): /* ROUTE */ ?>
+                    <div class="profiler-panel-left">
+                    	<ul class="profile-var-list">
+                        <?php foreach($mDetail['info'] as $sKey => $sInfo): ?>
+                        	<li>
+                            	<?php echo Inflector::humanize($sKey); ?>
+                                <span>
+                                	<?php echo $sInfo; ?>
+                                </span>
+                            </li>
+                        <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <div class="profiler-panel-right">
+                    	<ul class="profiler-list">
+                            <?php foreach(array_keys($mDetail['routes']) as $sCollection): ?>
+                                <?php /** @var $oRoute Linko_Route */foreach($mDetail['routes'][$sCollection] as $sRKey => $oRoute): ?>
+                                    <li class="route-data">
+                                        <h4>ID: <span style="color: #0a0; font-weight: normal;"><?php echo htmlentities($sRKey); ?></h4>
+                                        <?php foreach(array('Pattern' => $oRoute->getRawRegex(), 'Regex' => $oRoute->getRegex(), 'Constraint' => var_export($oRoute->getRules(), true), 'Type' => $oRoute->getType()) as $sVar => $sValue): ?>
+                                            <div style="padding: 5px; padding-left: 20px;">
+                                                <span><?php echo $sVar; ?></span> : <span><?php echo $sValue; ?></span>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </li>
+                                <?php endforeach; ?>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div> 
+                <?php elseif($sName == 'asset'): /* ASSET */ ?>
+                    <div class="profiler-panel-left">
+                    	<ul class="profile-var-list">
+                        <?php foreach($mDetail['info'] as $sKey => $sInfo): ?>
+                        	<li>
+                            	<?php echo Inflector::humanize($sKey); ?>
+                                <span>
+                                	<?php echo $sInfo; ?>
+                                </span>
+                            </li>
+                        <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <div class="profiler-panel-right">
+                    	<div class="profiler-tabs">
+                        	<ul>
+                            	<?php foreach($mDetail as $sKey => $mData): ?>
+                                	<?php if($sKey == 'info'){continue;} ?>
+                                <li>
+                                	<a href="#profiler-tabs-<?php echo $sKey; ?>">
+                                    	<?php echo Inflector::camelize($sKey); ?>
+                                    </a>
+                                </li>
+                                <?php endforeach; ?>
+
+                            </ul>
+                            <?php foreach($mDetail as $sTitle => $mData): ?>
+                            <?php if($sTitle == 'info'){continue;} ?>
+                            <div id="profiler-tabs-<?php echo $sTitle; ?>">
+                                <table cellspacing="0" class="profiler-list">
+                                	<?php foreach($mData as $sAsset): ?>
+                                	<tr>
+                                    	<td>
+                                        	<span class="profiler-red">
+                                            	&raquo;
+                                            </span>
+                                        	<span>
+												<?php echo $sAsset; ?>
+                                            </span>
+                                            <span class="profiler-right" style="font-size: 9px;">
+                                            	<a href="<?php echo $sAsset; ?>" target="_blank">[Open]</a>
+                                           	</span>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </table>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php else: ?>
+                     <?php foreach($mDetail as $sKey => $mData): ?>
+                        <?php echo $sKey; ?><br />
+                    <?php endforeach; ?>                   
+                <?php endif; ?>
+                </div>
+            </div>
+            <?php endforeach; ?>
+            </div>			
+        </div>
+	</div>
+</div>

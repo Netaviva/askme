@@ -1,0 +1,164 @@
+
+#messages-wrapper{
+    height: auto;
+    margin-top: 20px;
+}
+.message-header{
+   position: relative;
+  padding: 0 20px;
+  min-height: 40px;
+  background: #3C4D67;
+}
+
+.page-bar {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: -1px;
+  margin: auto;
+  padding: 0;
+}
+
+.page-bar .btn-toolbar {
+  margin: 0;
+}
+
+.page-bar .nav-tabs {
+  margin: 0;
+}
+
+.page-bar .nav-tabs > li > a {
+  color: #333;
+}
+
+.page-bar .nav-tabs > .active > a,
+.page-bar .nav-tabs > .active > a:hover {
+  color: #3399ff;
+  background: #f5f5f5;
+  width:100px;
+  font-size: 20px;
+  text-align: center;
+}
+
+
+
+#message-nav {
+  left: 20px;
+  right: 20px;
+  bottom: -1px;
+  margin: auto;
+  padding: 0;
+}
+
+#message-nav ul
+{
+    margin-left: 10px;
+}
+#message-nav ul li
+{
+    display: inline-block;
+    padding: 5px;
+    background: white;
+    margin-top:2px;
+    border-top-left-radius:5px;
+    border-top-right-radius: 5px;
+
+}
+#message-header-entity-fullname
+{
+    margin: 1px;
+}
+#messages-entity-wrapper{
+    float:left;
+    min-height:200px;
+    max-height:400px;
+    background: #ffffff;
+    overflow: hidden;
+    width:100%;
+}
+
+#messages-conversation-wrapper{
+    background:#ffffff;
+}
+
+#main-messages-conversation-div
+{
+    overflow: hidden;
+    min-height: 100px;
+    float:left;
+    width: 100%;
+}
+.message-entity, .message-content{
+    margin-bottom: 1px;
+    background: #ffffff;
+    border-bottom: 1px solid #cccccc;
+}
+.message-entity:hover
+{
+    background: #d3d3d3;
+}
+
+.message-content
+{
+    border-bottom: solid 1px #d3d3d3;
+    padding: 5px;
+}
+.message-entity h5, .message-content h5
+{
+    margin: 1px;
+    font-size:15px;
+}
+.message-entity span,.message-content span
+{
+    color:gray;
+    margin: 4px;
+    font-size: 12px;
+}
+.message-entity a,.message-content a:hover{
+    text-decoration: none;
+}
+.message-entity a:hover,.message-content a:hover{
+    text-decoration: none;
+}
+.message-entity .avatar,.message-content .avatar
+{
+    float:left;
+    width: 20%;
+    padding:3px;
+    border-radius: 10px;
+}
+.message-entity .avatar img,.message-content .avatar img
+{
+    border-radius: 5px;
+}
+.message-content .avatar
+{
+    width:10%;
+}
+.message-entity .message-entity-data{
+}
+
+.message-unread
+{
+    background: #d3d3d3;
+}
+.message-unread span
+{
+    color: grey;
+}
+
+.message-content .message-content-data{
+}
+
+.message_time_format
+{
+    margin-top:5px;
+    font-size: 10px !important;
+}
+#message-post-reply-form
+{
+    position:relative;
+    float: left;
+     width: 100%;
+    background: gray;
+}

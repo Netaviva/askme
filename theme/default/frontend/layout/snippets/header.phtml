@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template|Linko_Template
+ */
+
+defined('LINKO') or exit;
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title><?php echo $this->getTitle(); ?></title>
+    <?php echo $this->getHeader(); ?>
+
+    <style type="text/css">
+        body{
+            background-color: <?php echo $this->getSetting('background_color'); ?>;
+        }
+    </style>
+</head>
+
+<body>
+<div id="header">
+	<div class="row">
+		<div class="twelve columns">
+			<h1 id="logo"><?php echo Linko::Module()->getSetting('page.site_title'); ?></h1>
+			<div id="main-menu">
+                <?php echo $this->plugin('menu', array('location' => 'main_menu', 'depth' => 1)); ?>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="page-header">
+	<div class="row">
+		<div class="twelve columns">
+			<h2><?php echo $this->getBreadcrumbTitle(); ?></h2>
+		</div>
+	</div>
+</div>

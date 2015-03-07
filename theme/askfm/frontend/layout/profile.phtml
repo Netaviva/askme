@@ -1,0 +1,73 @@
+<?php
+/**
+ * @var $this Linko_Application_Template|Linko_Template
+ */
+defined('LINKO') or exit;
+
+$this->setStyle('profile.css', 'theme_css');
+
+$this->setStyle('send-message.css', 'module_messages');
+$this->setScript('send-message.js', 'module_messages')->setTranslation(array('messages.send_message', 'messages.send_error', 'messages.sent_message'));
+
+$this->setScript('follow.js', 'module_follow');
+?>
+
+<?php $this->getLayout('snippets/header'); ?>
+
+<div  class="container">
+    <?php if ($this->hasBlocks('topsiteAdvert')): ?>
+        <div class="row">
+            <div id="sidebar" class="span12">
+                <?php $this->plugin('block', array('position' => 'topsiteAdvert', 'title' => false)); ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <div class="row">
+        <div id="main" class="span8 pull-right">
+            <div class="navbar" id="profile-nav">
+                <div class="navbar-inner">
+                    <div class="pull-right">
+                        <ul class="nav">
+                            <?php foreach (Linko::Model('profile')->getMenus() as $name => $param): ?>
+                                <li <?php echo ($param['id'] == Linko::Model('profile')->getSlug()) ? "class='active'" : null ?> >
+                                    <a href="<?php echo $param['link'] ?>"> <?php echo $name ?> </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <?php $this->getLayout('snippets/flash'); ?>
+
+            <?php $this->plugin('error'); ?>
+
+            <?php echo $this->getContent(); ?>
+        </div>
+
+        <div id="sidebar" class="span4">
+            <div id="profile-avatar-container">
+                <div class="btn btn-inverse" id="profile-fullname-title"><?php echo ucwords(Linko::Model('Profile')->get('firstname') . ' ' . Linko::Model('Profile')->get('lastname')) ?></div>
+                <img src="<?php echo $this->getImage(array('user' => Linko::Model('profile')->get(), 'size' => 200), 'user_image') ?>"/>
+            </div>
+            <div class="btn btn-info" id="profile-stats-container">
+                <?php foreach (Linko::Model('profile')->getStatistic() as $aStats): ?>
+                    <a class="btn btn-info" href="<?php echo $aStats['link'] ?>"><span><?php echo $aStats['number'] ?></span>  <?php echo $aStats['name'] ?></a>
+                <?php endforeach ?>
+                <div class="clear"></div>
+            </div>
+            <?php Linko::Plugin()->call('profile.tools_start') ?>
+            <?php $this->plugin('block', array('position' => 'sidebar')); ?>
+        </div>
+    </div>
+
+    <?php if ($this->hasBlocks('bottomsiteAdvert')): ?>
+        <div class="row">
+            <div id="sidebar" class="span12">
+                <?php $this->plugin('block', array('position' => 'bottomsiteAdvert', 'title' => false)); ?>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>
+
+<?php $this->getLayout('snippets/footer'); ?>

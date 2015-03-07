@@ -1,0 +1,16 @@
+<div>
+    <form id="message-post-reply-form" action="" method="post">
+        <div class="control-group">
+            <div class="controls">
+                <textarea class=" autogrow span8" name="text" id="message-text"></textarea>
+            </div>
+            <input type="hidden" id="from-user-id" value="<?php echo (!empty($aUser)) ? $aUser['user_id'] : 0 ?>">
+        </div>
+        <div class="control-group">
+            <div class="controls pull-right">
+                <input type="submit" class="btn btn-green" value="<?php echo Lang::t('messages.post_reply') ?>">
+            </div>
+            <span id="message-post-reply-indicator"></span>
+        </div>
+    </form>
+</div>

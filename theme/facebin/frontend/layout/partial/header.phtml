@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template|Linko_Template
+ */
+
+defined('LINKO') or exit;
+
+$bIsHome = isset($bIsHome) ? $bIsHome : false;
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title><?php echo $this->getTitle(); ?></title>
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->getThemeUrl(); ?>css/foundation.css" />
+    <?php echo $this->getHeader(); ?>
+</head>
+
+<body class="<?php echo($bIsHome) ? 'home' : ''; ?>">
+<div id="header">
+	<div class="row">
+		<div class="twelve columns">
+			<h1 id="logo">
+				<a href="<?php echo Linko::Url()->make(); ?>">
+					<?php echo Linko::Module()->getSetting('page.site_title'); ?>
+				</a>
+			</h1>
+			<div id="main-menu">
+                <?php echo $this->plugin('menu', array('location' => 'main_menu', 'depth' => 1)); ?>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php if(!$bIsHome): ?>
+<div id="page-header">
+	<div class="row">
+		<div class="twelve columns">
+			<h2><?php echo $this->getBreadcrumbTitle(); ?></h2>
+		</div>
+	</div>
+</div>
+<?php endif; ?>

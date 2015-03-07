@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template
+ */
+?>
+
+<?php $this->getLayout('partial/header'); ?>
+
+<div id="content" class="row">
+	<?php if($this->hasBlocks('sidebar')): ?>
+	<div id="sidebar" class="three columns">
+		<?php $this->plugin('block', array('position' => 'sidebar')); ?>
+	</div>
+	<?php endif; ?>
+
+	<?php if($this->hasBlocks('sidebar') && !$this->hasBlocks('rightbar')): ?>
+	<div class="nine columns">
+	<?php elseif($this->hasBlocks('rightbar') && !$this->hasBlocks('sidebar')): ?>
+	<div class="nine columns">
+	<?php elseif(!$this->hasBlocks('rightbar') && !$this->hasBlocks('sidebar')): ?>
+	<div class="twelve columns">
+	<?php else: ?>
+	<div class="six columns">
+	<?php endif; ?>
+		<div id="main">
+			<?php $this->getLayout('snippets/flash'); ?>
+
+			<?php $this->plugin('error'); ?>
+
+			<?php echo $this->getContent(); ?>
+		</div>
+	</div>
+
+	<?php if($this->hasBlocks('rightbar')): ?>
+	<div id="rightbar" class="three columns">
+		<?php $this->plugin('block', array('position' => 'rightbar')); ?>
+	</div>
+	<?php endif; ?>
+</div>
+
+<?php $this->getLayout('partial/footer'); ?>

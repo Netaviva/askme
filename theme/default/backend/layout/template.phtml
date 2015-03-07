@@ -1,0 +1,114 @@
+<?php defined('LINKO') or exit(); ?>
+
+<?php $this->getLayout('header'); ?>
+<div id="wrapper">
+	<div id="header">
+		<div class="row">
+			<div class="twelve columns">
+				<div class="top-bar">
+					<ul id="title" class="left">
+						<li class="name"><a href="<?php echo Linko::Url()->make('admincp'); ?>">LinkoCMS</a></li>
+						<li class="toggle-topbar"><a href="#"></a></li>
+					</ul>
+
+					<div class="section">
+						<ul class="left">
+                            <?php foreach (Linko::Model('Admincp')->getMenu(array('required_modules')) as $sTitle => $mLink): ?>
+							<li class="divider"></li>
+							<li class="<?php echo(is_array($mLink) ? 'has-dropdown' : ''); ?>">
+                                <?php if (is_array($mLink)): ?>
+								<a onclick="return false;" href="#">
+                                    <?php echo $sTitle; ?>
+								</a>
+								<ul class="dropdown">
+                                    <?php foreach ($mLink as $sTitle2 => $mLink2): ?>
+									<li class="divider"></li>
+									<li>
+										<a href="<?php echo $mLink2; ?>">
+                                            <?php echo $sTitle2; ?>
+										</a>
+									</li>
+                                    <?php endforeach; ?>
+								</ul>
+                                <?php else: ?>
+								<a href="<?php echo $mLink; ?>">
+                                    <?php echo $sTitle; ?>
+								</a>
+                                <?php endif; ?>
+							</li>
+                            <?php endforeach; ?>
+							<li class="divider"></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div id="sidebar" class="two columns">
+			<ul>
+                <?php foreach (Linko::Model('Admincp')->getMenu(array('main', 'other_modules')) as $sTitle => $mLink): ($bSub = (is_array($mLink) ? true : false)); ?>
+				<li class="<?php echo $bSub ? 'drop-menu' : '';  ?>">
+                    <?php if ($bSub): ?>
+					<a href="#">
+                        <?php echo $sTitle; ?>
+					</a>
+					<ul>
+                        <?php foreach ($mLink as $sTitle2 => $mLink2): ?>
+						<li>
+							<a href="<?php echo $mLink2; ?>">
+                                <?php echo $sTitle2; ?>
+							</a>
+						</li>
+                        <?php endforeach; ?>
+					</ul>
+                    <?php else: ?>
+					<a href="<?php echo $mLink; ?>">
+                        <?php echo $sTitle; ?>
+					</a>
+                    <?php endif; ?>
+				</li>
+                <?php endforeach; ?>
+			</ul>
+		</div>
+
+		<div id="content" class="eight columns">
+			<div id="page-title">
+                <?php $this->plugin('breadcrumb', array('links' => false)); ?>
+			</div>
+            <?php $this->plugin('flash'); ?>
+            <?php $this->plugin('error'); ?>
+            <?php echo $this->getContent(); ?>
+		</div>
+
+        <div id="rightbar" class="two columns">
+            <div class="admin-user-detail">
+
+                <img src="<?php echo $this->getImage(array('user' => Linko::Model('User/Auth')->getUser(), 'size' => 50), 'user_image'); ?>" />
+	            <div class="username"><?php echo Linko::Model('User/Auth')->getUserBy('username'); ?></div>
+            </div>
+
+            <ul>
+	            <li>
+		            <a href="<?php echo Linko::Url()->make(); ?>">
+			            View Site
+		            </a>
+	            </li>
+                <li>
+                    <a href="<?php echo Linko::Url()->make('user:profile', array('username' => Linko::Model('User/Auth')->getUserBy('username'))); ?>">
+                        My Profile
+                    </a>
+                </li>
+	            <li>
+		            <a href="<?php echo Linko::Url()->make('user:logout'); ?>">
+			            Logout
+		            </a>
+	            </li>
+            </ul>
+
+        </div>
+	</div>
+</div>
+<?php $this->getLayout('footer'); ?>

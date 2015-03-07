@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template|Linko_Template
+ */
+
+defined('LINKO') or exit;
+
+?>
+
+<?php $this->getLayout('snippets/header'); ?>
+
+<div id="content" class="row">
+	<div id="sidebar" class="four columns">
+        <?php $this->plugin('block', array('position' => 'sidebar')); ?>
+	</div>
+	<div id="main" class="eight columns">
+        <?php $this->getLayout('snippets/flash'); ?>
+        <?php echo $this->getContent(); ?>
+	</div>
+</div>
+
+<?php $this->getLayout('snippets/footer'); ?>

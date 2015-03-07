@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:module>
+	<title>Profiler</title>
+	<version>1.0.1</version>
+	<description>Instant debugging with a cool interface. And extended features.</description>
+	<core>0</core>
+	<auto_enable>1</auto_enable>
+	<author>Morrison Laju</author>
+	<author_url>http://morrelinko.com</author_url>
+
+	<settings>
+		<setting var="profiler.auto_maximize"
+		         title="Auto Maximize"
+		         description="Enable this to show the profiler maximized on page load."
+		         type="boolean">0</setting>
+	</settings>
+
+</extension:module>

@@ -1,0 +1,43 @@
+<div class="mail-setting">
+	<form action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+	<div class="module">
+		<?php foreach($aMails as $aMail): ?>
+		<div class="module-header">
+			<h3><?php echo $aMail['mail_title']; ?></h3>
+		</div>
+
+		<div class="module-content">
+			<div class="controls">
+				<div class="control-item">
+					<div class="control-item-label">
+						<p><?php echo $aMail['mail_description']; ?></p>
+					</div>
+					<div class="control-item-data">
+						<div class="control-item">
+							<div class="control-item-label">
+								Subject
+							</div>
+							<div class="control-item-data">
+								<input type="text" name="email[<?php echo $aMail['mail_var']; ?>][subject]" value="<?php echo $aMail['mail_subject']; ?>">
+							</div>
+						</div>
+						<div class="control-item">
+							<div class="control-item-label">
+								Body
+							</div>
+							<div class="control-item-data">
+								<textarea rows="6" name="email[<?php echo $aMail['mail_var']; ?>][body]"><?php echo $aMail['mail_body']; ?></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php endforeach; ?>
+		<div class="module-footer">
+			<input class="button" type="submit" value="Submit" />
+		</div>
+	</div>
+	</form>
+
+</div>

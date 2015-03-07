@@ -1,0 +1,39 @@
+<form action="" method="post">
+    <div class="module">
+        <div class="module-header">
+            <h3><?php echo $bEdit ? 'Edit Menu' : 'Add Menu'; ?></h3>
+        </div>
+        <div class="module-content">
+	        <div class="controls">
+                <div class="control-item">
+                    <div class="control-item-label">
+                        <label for="title">Title: </label>
+                    </div>
+                    <div class="control-item-data">
+                        <input type="text" id="title" class="input-text" name="val[title]" value="<?php echo Arr::get($aVals, 'title', Arr::get($aMenu, 'menu_title', '')); ?>"/>
+                    </div>
+                </div>
+
+		        <div class="control-item">
+			        <div class="control-item-label">
+				        <label for="title">Theme Location: </label>
+			        </div>
+			        <div class="control-item-data">
+                        <select name="val[location]">
+                            <option value="">-- Select Location --</option>
+                            <?php foreach($aLocations as $aLocation): ?>
+                            <option value="<?php echo $aLocation['var']; ?>"<?php echo Arr::get($aVals, 'location', Arr::get($aMenu, 'menu_location', '')) == $aLocation['var'] ? ' selected="selected"' : ''; ?>>
+                                <?php echo $aLocation['value']; ?>
+                            </option>
+                            <?php endforeach; ?>
+                        </select>
+			        </div>
+		        </div>
+
+            </div>
+        </div>
+	    <div class="module-footer">
+		    <input type="submit" value="<?php echo $bEdit ? 'Save Menu' : 'Create Menu'; ?>" class="button"/>
+	    </div>
+    </div>
+</form>

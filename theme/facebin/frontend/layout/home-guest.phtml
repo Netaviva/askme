@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template
+ */
+?>
+
+<?php $this->getLayout('partial/header', array('bIsHome' => true)); ?>
+
+<div id="content">
+	<div class="row">
+		<div class="eight columns">
+			<div id="main">
+				<?php //$this->getLayout('snippets/flash'); ?>
+				<?php $this->plugin('error'); ?>
+				<p>
+					<?php echo $this->getSetting('home_text'); ?>
+				</p>
+			</div>
+		</div>
+		<div class="four columns">
+			<?php $this->getLayout('partial/login'); ?>
+		</div>
+	</div>
+</div>
+
+<?php $this->getLayout('partial/footer-home'); ?>

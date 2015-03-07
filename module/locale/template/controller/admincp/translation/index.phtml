@@ -1,0 +1,73 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage locale : controller_template - admincp\translation\index.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div class="module">
+    <?php if($sLangId): ?>
+        <div class="module-header">
+            <h3>Language (<?php echo $sLangId; ?>)</h3>
+        </div> 
+        
+        <div class="module-content">
+            <table>
+                <thead>
+                    <th style="width: 80%;">
+                        Module
+                    </th>
+                    <th style="width: 20%;">
+                        Translations
+                    </th>
+                </thead>
+                <tbody>
+                    <?php foreach($aModules as $aModule): ?>
+                    <tr>
+                        <td>
+                            <a href="<?php echo Linko::Url()->make('locale:admincp:translation:module', array('lang_id' => $sLangId, 'module' => $aModule['module_id'])); ?>">
+                                <?php echo $aModule['module_id']; ?>
+                            </a>
+                        </td>
+                        <td>
+                            <?php echo $aModule['total_translation']; ?>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>  
+        </div>
+            
+    <?php else: ?>
+        <div class="module-header">
+            <h3>Supported Locales</h3>
+        </div>
+        
+        <div class="module-content">
+            <table>
+                <thead>
+                    <th style="width: 80%;">
+                        Locale ISO
+                    </th>
+                </thead>
+                <tbody>
+                    <?php foreach($aLanguages as $aLanguage): ?>
+                    <tr>
+                        <td>
+                            <a href="<?php echo Linko::Url()->make('locale:admincp:translation', array('lang_id' => $aLanguage['locale_id'])); ?>">
+                                <?php echo $aLanguage['locale_id']; ?>
+                            </a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    <?php endif; ?>
+</div>

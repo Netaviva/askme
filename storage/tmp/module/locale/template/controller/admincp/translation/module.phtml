@@ -1,0 +1,65 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage locale : controller_template - admincp\translation\module.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<form action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+    <div class="module">
+    
+        <div class="module-header">
+            <h3>Translations (<?php echo $sModule; ?>)</h3>
+        </div>
+        
+        <div class="module-content">
+            <table>
+                <thead>
+                    <th style="width: 5%;">
+                    </th>
+                    <th style="width: 15%;">
+                        Reference Key
+                    </th>
+                    <th style="width: 40%;">
+                        Translation
+                    </th>
+                    <th style="width: 40%;">
+                        Edit
+                    </th>           
+                </thead>
+                <tbody>
+                    <?php foreach($aTranslations as $aTrans): ?>
+                    <tr class="<?php echo $this->plugin('cycle', array('value' => 'odd,even')); ?>">
+                        <td>
+                            <input type="checkbox" name="var[]" value="<?php echo $aTrans['translation_var']; ?>" />
+                        </td>
+                        <td>
+                            <?php echo $aTrans['translation_var']; ?>
+                        </div>
+                        <td>
+                            <?php echo $aTrans['translation_value']; ?>
+                        </td>
+                        <td class="form-control">
+                            <textarea name="val[<?php echo $aTrans['translation_var']; ?>]"><?php echo $aTrans['translation_value']; ?></textarea>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        
+        <?php echo $this->plugin('pager'); ?>
+        
+        <div class="module-footer">
+            <input type="submit" class="button" name="act[save_selected]" value="Save Selected" />
+            <input type="submit" class="button" name="act[delete_selected]" value="Delete Selected" />
+            <input type="submit" class="button" name="act[save_all]" value="Save All" />
+        </div>
+    </div>
+</form>

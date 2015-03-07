@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template|Linko_Template
+ */
+
+defined('LINKO') or exit;
+
+?>
+
+<?php $this->getLayout('snippets/header', array('bIsHome' => true)); ?>
+    <div class="container">
+        <div class="row">
+            <div class="span8 homepageblock">
+        <h2><?php echo $this->getSetting('home_text'); ?></h2>
+        <?php $this->getLayout('snippets/home'); ?>
+            </div>
+            <div class="span4">
+        <div id="register-form-container" class="home-general-div">
+            <h1 >Sign Up For Free</h1>
+            <?php echo $this->getTemplate('user/block/register',array('aVals' => array()))?>
+        </div>
+            </div>
+        </div>
+
+   </div>
+
+<?php $this->getLayout('snippets/footer'); ?>

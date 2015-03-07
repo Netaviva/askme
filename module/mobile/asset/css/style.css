@@ -1,0 +1,161 @@
+body
+{
+	background: #3C3C3C;
+	color: #20201F;
+	font-family: Arial;
+	font-size: 15px;
+	line-height: 150%;
+	margin: 0;
+	padding: 0;
+}
+
+a:link, a:visited, a:hover
+{
+	color: #BB0A0A;
+	text-decoration: none;
+}
+
+#header
+{
+	height: 50px;
+	margin-top: 10px;
+	margin-bottom: 0;
+	position: relative;
+	z-index: 100;
+}
+
+#wrapper
+{
+	margin: 0 auto;
+	max-width: 320px;
+	min-width: 250px;
+}
+
+#logo
+{
+	color: #FFF;
+	text-shadow: 1px 2px 2px #000;
+	width: 100%;
+	display: block;
+	text-decoration: none;
+	text-align: center;
+}
+
+#logo h1
+{
+	margin: 2px 0 0;
+	font-family: Arial;
+}
+
+#content
+{
+	border-top: 5px solid #900;
+	background: #FFFFFF;
+	clear: both;
+	padding: 10px;
+}
+
+
+.button
+{
+	background: #BE0E0E;
+	border: medium none;
+	border-radius: 5px 5px 5px 5px;
+	box-shadow: 0 1px 1px #BFC1C1;
+	color: #FFFFFF;
+	cursor: pointer;
+	font-size: 18px;
+	font-style: normal;
+	line-height: normal;
+	padding: 9px 20px;
+	text-shadow: 0 1px 0 #585E61;
+}
+
+input, textarea, select
+{
+	color: #84898C;
+	font-family: Georgia,"Times New Roman",Times,serif;
+	font-size: 18px;
+	font-style: italic;
+	line-height: normal;
+}
+
+input[type=password],
+input[type=text],
+textarea,
+select
+{
+	max-width: 280px;
+}
+
+.item-title
+{
+	margin-bottom: 5px;
+
+}
+
+.item-meta, .post-extra
+{
+	background-color: #F4F4F4;
+	border: 1px solid #CCCCCC;
+	padding: 4px;
+}
+
+.item-content
+{
+	padding: 5px;
+}
+
+/***** Blog *****/
+.post-item
+{
+	border: 1px solid #CCCCCC;
+	margin-bottom: 10px;
+}
+
+.post-item .post-meta, .post-item .post-extra
+{
+	border-left: none;
+	border-right: none;
+}
+
+.post-extra
+{
+	border-bottom: none;
+}
+
+.post-title
+{
+	padding: 5px;
+}
+
+#comments li:last-child
+{
+	margin-bottom: 0;
+}
+
+#comments
+{
+	border-top: 1px solid #CCC;
+}
+#comments-form, #comments
+{
+	background: #E3E4E2;
+	margin-left: -10px;
+	margin-right: -10px;
+	overflow: hidden;
+	padding: 10px 10px;
+}
+
+div.control-item-data
+{
+	margin: 0;
+	padding: 3px 8px 5px;
+}
+
+.control-item-data
+{
+	background: #FFFFFF;
+	border-radius: 5px 5px 5px 5px;
+	margin: 0 0 15px;
+}

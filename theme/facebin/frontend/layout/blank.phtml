@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template
+ */
+?>
+
+<?php $this->getLayout('partial/header'); ?>
+
+<div id="content" class="row">
+
+	<div class="three columns">
+		&nbsp;
+	</div>
+	<div class="six columns">
+		<div id="main">
+			<?php $this->getLayout('snippets/flash'); ?>
+
+			<?php $this->plugin('error'); ?>
+
+			<?php echo $this->getContent(); ?>
+		</div>
+	</div>
+	<div class="three columns">
+		&nbsp;
+	</div>
+</div>
+
+<?php $this->getLayout('partial/footer'); ?>

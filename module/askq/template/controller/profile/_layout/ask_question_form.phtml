@@ -1,0 +1,13 @@
+<div id="ask-question-form-container">
+    <form id="ask-question-form" userid = "<?php echo Linko::Model('Profile')->getOwnerId()?>" action="" method="post">
+        <div class="row">
+            <textarea name="text" id="question-content-input"></textarea>
+
+        </div>
+        <div class="row">
+            <span id="question-post-indicator-container"></span>
+            <input type="checkbox" name="anonymous"> <span><?php echo Lang::t('askq.make_question_anonymous')?></span>
+            <input type="submit" id="ask-question-button" value="<?php echo Lang::t('askq.ask_question')?>">
+        </div>
+    </form>
+</div>

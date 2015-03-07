@@ -1,0 +1,15 @@
+<?php defined('LINKO') or exit;
+
+/**
+ * @package Mobile
+ * @author Morrison Laju <morrelinko@gmail.com>
+ * @var $this Linko_Application_Template
+ */
+?>
+
+<div id="mobile-controller-dashboard">
+    <?php foreach(Linko::Model('Module')->getModules() as $aModule): ?>
+    <img src="<?php echo $this->getImage('module/none.png', 'module_mobile'); ?>" />
+    <?php echo($aModule['title']); ?>  <br />
+    <?php endforeach; ?>
+</div>
